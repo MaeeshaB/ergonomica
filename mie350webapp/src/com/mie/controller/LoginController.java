@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.mie.model.*;
 import com.mie.dao.*;
-
+// Hello this is a pseudo-feature
 /**
  * Servlet implementation for LoginController.
  * 
