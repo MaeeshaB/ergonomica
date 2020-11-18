@@ -18,12 +18,13 @@ public class LogoutServlet extends HttpServlet {
 
 		/**
 		 * When the user logs out of the system, redirect them to the public
-		 * home page (index.jsp).
+		 * home page (suggestedProducts.jsp).
 		 */
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-		request.getRequestDispatcher("index.jsp").include(request, response);
+		response.setIntHeader("Refresh", 5);
+		request.getRequestDispatcher("suggestedProducts.jsp").include(request, response);
 
 		/**
 		 * Invalidate the current member's session and set its status to false.

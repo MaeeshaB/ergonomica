@@ -35,43 +35,7 @@
 			</div>
 			<div class="col-sm-8 text-left">
 				<h1>About</h1>
-				This is a sample web app created for the <b>MIE350</b> course at the
-				<a href="http://www.utoronto.ca">University of Toronto</a> for
-				demonstration purposes. <br> <br> It was developed using
-				the following:<br>
-				<ul>
-					<li>Eclipse Java EE IDE for Web Developers,</li>
-					<li>The Java programming language,</li>
-					<li>Java Server Pages (JSP),</li>
-					<li>Apache Tomcat 7.0, and</li>
-					<li>A simple Microsoft Access database.</li>
-				</ul>
-				As well, the following <b>open-source</b> tools were used:
-				<ul>
-					<li><a href="http://getbootstrap.com/">The Bootstrap CSS
-							theme</a>, and</li>
-					<li><a href="https://kryogenix.org/code/browser/sorttable/">Stuart
-							Langridge's Sort Table JavaScript</a></li>
-				</ul>
-				<hr>
-				<h2>This Sample Web App</h2>
-				<br> This is a toy example that does the following: <br>
-				<ul>
-					<li><b>Create</b> new students in the database.</li>
-					<li><b>Read</b> in students from the database.</li>
-					<li><b>Update</b> student information in the database.</li>
-					<li><b>Delete</b> student in the database.</li>
-					<li><b>Search</b> for students in the database.</li>
-					<li><b>Logs in</b> members to the system to add/update/delete
-						students in the database.</li>
-				</ul>
-				<hr>
-				<h2>Organization of Files</h2>
-				<img src="img/mie350_webapp_schematic.jpg"> <br />
-				<h2>Using This For Your Projects</h2>
-				<br> You are free to use and modify this template file for your
-				projects.<br />
-				<br />
+				<!-- Put main information here -->
 			</div>
 			<div class="col-sm-2 sidenav">
 				<!-- You can put right sidebar links here if you want to. -->

@@ -5,18 +5,9 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>mie350webapp</display-name>
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
-	<servlet>
-		<description></description>
-		<display-name>StudentController</display-name>
-		<servlet-name>StudentController</servlet-name>
-		<servlet-class>com.mie.controller.StudentController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>StudentController</servlet-name>
-		<url-pattern>/StudentController</url-pattern>
-	</servlet-mapping>
+		<welcome-file>landingpage.jsp</welcome-file>
+	</welcome-file-list>	
+	
 	<servlet>
 		<description></description>
 		<display-name>SearchController</display-name>
@@ -27,6 +18,51 @@
 		<servlet-name>SearchController</servlet-name>
 		<url-pattern>/SearchController</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>ProductController</display-name>
+		<servlet-name>ProductController</servlet-name>
+		<servlet-class>com.mie.controller.ProductController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProductController</servlet-name>
+		<url-pattern>/ProductController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>PostController</display-name>
+		<servlet-name>PostController</servlet-name>
+		<servlet-class>com.mie.controller.PostController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostController</servlet-name>
+		<url-pattern>/PostController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>FilterController</display-name>
+		<servlet-name>FilterController</servlet-name>
+		<servlet-class>com.mie.controller.FilterController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FilterController</servlet-name>
+		<url-pattern>/FilterController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>MyWorkspaceController</display-name>
+		<servlet-name>MyWorkspaceController</servlet-name>
+		<servlet-class>com.mie.controller.MyWorkspaceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyWorkspaceController</servlet-name>
+		<url-pattern>/MyWorkspaceController</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<description></description>
 		<display-name>LoginController</display-name>

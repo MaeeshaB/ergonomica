@@ -24,31 +24,33 @@ public class LoginController extends HttpServlet {
 		/**
 		 * Retrieve the entered username and password from the login.jsp form.
 		 */
-		Member member = new Member();
-		member.setUsername(request.getParameter("un"));
-		member.setPassword(request.getParameter("pw"));
+		User user = new User();
+		user.setUsername(request.getParameter("un"));
+		user.setPassword(request.getParameter("pw"));
 
 		try {
 			/**
 			 * Try to see if the member can log in.
 			 */
-			member = MemberDao.login(member);
+			user = UserDao.login(user);
 
 			/**
 			 * If the isValid value is true, assign session attributes to the
 			 * current member.
 			 */
-			if (member.isValid()) {
+			if (user.isValid()) {
 
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionmember", member);
-				session.setAttribute("username", member.getUsername());
-				session.setAttribute("firstname", member.getFirstName());
-				session.setAttribute("lastname", member.getLastName());
+				session.setAttribute("currentSessionmember", user);
+				session.setAttribute("username", user.getUsername());
+				session.setAttribute("firstname", user.getFirstName());
+				session.setAttribute("lastname", user.getLastName());
 				/**
 				 * Redirect to the members-only home page.
 				 */
-				response.sendRedirect("memberLogged.jsp");
+				response.setIntHeader("Refresh", 5);
+				response.sendRedirect("myworkspace.jsp");
+				
 
 				/**
 				 * Set a timeout variable of 900 seconds (15 minutes) for this
