@@ -80,16 +80,16 @@ public class Post {
 	
 	public String ContainsUserId(String userid) {
 		if (postreaction_userids.contains(userid)) {
-			return "";
+			return "&#x2665;";
 		}
-		return "-empty";
+		return "&#9825;";
 	}
 	
-	public boolean ContainsUserIdBoolean(String userid) {
+	public String liked(String userid) {
 		if (postreaction_userids.contains(userid)) {
-			return false;
+			return "unlike";
 		}
-		return true;
+		return "like";
 	}
 	
 	@Override

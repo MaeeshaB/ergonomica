@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -55,9 +55,10 @@
 				<!-- You can put right sidebar links here if you want to. -->
 			</div>
 		</div>
+		
+		<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 	</div>
 
-	<%@ include file="footer.jsp"%>
 
 
 </body>

@@ -10,7 +10,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="bootstrap2.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -49,7 +51,7 @@
 								<img src="img/${post.getPostPhoto()}" width="200" height="200">
 								<br>
 								
-								<a onclick="return ${post.ContainsUserIdBoolean("admin01")}" class="glyphicon glyphicon-heart${post.ContainsUserId("admin01")}" href="PostController?action=like&postid=<c:out value="${post.getPostId()}"/>&userid=admin01"></a>
+								<a href="PostController?action=${post.liked("admin01")}&postid=<c:out value="${post.getPostId()}"/>&userid=admin01" >${post.ContainsUserId("admin01")}</a>
 								<br>
 								<c:out value="${post.getPostDesc()}" />
 								<br> <br>
@@ -66,9 +68,10 @@
 				<a data-role="button" data-icon="icon-addpost" data-iconpos="notext"></a>
 			</div>
 		</div>
+		
+		<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 	</div>
 
-	<%@ include file="footer.jsp"%>
 
 
 </body>

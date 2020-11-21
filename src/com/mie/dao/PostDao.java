@@ -52,6 +52,10 @@ public class PostDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		//Updating the model
+		//post.setPostLikes(likes);
+		//post.setPostReactionUserId(getPostReactionsById(postid));
 	}
 
 	public static Post getPostById(String postid) {
@@ -121,6 +125,33 @@ public class PostDao {
 		}
 
 		return postreactions;
+	}
+
+	public void unlike(String postid, String userid) {
+		Post post = getPostById(postid);
+		int likes = post.getPostLikes()- 1;
+
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("update post set post_likes="+likes+" where post_id='"+postid+"'");
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//Record new post reaction
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("delete from post_reaction WHERE post_id = '"+postid+"' AND user_id='"+ userid +"'");
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

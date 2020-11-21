@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -105,11 +105,10 @@
 					<div class="col-md-4">
 					<img src="img/${product.getProductImage()}" width="200" height="200">
 					<br>
-					$ <c:out value="${product.getProductPrice()}" />
 					<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${product.getProductid()}"/>">${product.getProductName()}</a>
-					<a class="glyphicon glyphicon-heart-empty" href="MyWorkspaceController?action=save&prodid=value="${product.getProductid()}""></a>
 					<br>
-					<c:out value="${product.getProductDesc()}" />
+					<a href="MyWorkspaceController?action=save&prodid=value="${product.getProductid()}"">&#9825;</a>
+					$ <c:out value="${product.getProductPrice()}" />
 					<br>
 					</div>
 					
@@ -117,11 +116,11 @@
 				</center>
 
 			</div>
+			
+			<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 		</div>
-		
 	</div>
 
-	<%@ include file="footer.jsp"%>
 
 
 </body>

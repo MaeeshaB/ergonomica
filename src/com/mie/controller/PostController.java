@@ -39,15 +39,21 @@ public class PostController extends HttpServlet {
 
 		String forward = SHARE_YOUR_SETUP;
 		String action = request.getParameter("action");
-
-		if (action.equalsIgnoreCase("like")) {
-			String postid = request.getParameter("postid");
-			String userid = request.getParameter("userid");
-			dao.like(postid, userid);
-		}
 		
-		request.setAttribute("posts", dao.getAllPosts());
+		String postid = request.getParameter("postid");
+		String userid = request.getParameter("userid");
+		
+		if (action.equalsIgnoreCase("like")) {
+			dao.like(postid, userid);
+		} else if (action.equalsIgnoreCase("unlike")) {
+			dao.unlike(postid, userid);
+		}
+		else if (action.equalsIgnoreCase("getPosts")) {
+			request.setAttribute("posts", dao.getAllPosts());
+		}
 
+		request.setAttribute("posts", dao.getAllPosts());
+		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}

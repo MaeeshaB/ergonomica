@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -34,12 +34,26 @@
 		<div class="row content">
 			
 			<div class="col-sm-8 text-left">
-				<h1> <c:out value="${selectedProduct.getProductName()}" /> </h1>
 				
-				<img src="img/${selectedProduct.getProductImage()}">
-				<c:out value="${selectedProduct.getProductDesc()}" />
-				$ <c:out value="${selectedProduct.getProductPrice()}" />
-				
+				<table border=1>
+					<thead>
+					<c:out value="${selectedProduct.getProductName()}" />
+					$ <c:out value="${selectedProduct.getProductPrice()}" />
+					</thead>
+					<tbody>
+						<tr>
+						<img src="img/${selectedProduct.getProductImage()}" width="600">
+						</tr>
+						
+						<tr>
+						<c:out value="${selectedProduct.getProductDesc()}" />
+						</tr>
+						
+						<tr>
+						Get the product: <c:out value="${selectedProduct.getProductLink()}" />
+						</tr>
+					</tbody>
+				</table>
 
 			</div>
 		</div>
