@@ -3,15 +3,19 @@ package com.mie.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mie.dao.ProductDao;
+import com.mie.model.Product;
 
 public class SearchController extends HttpServlet {
 	/**
@@ -36,19 +40,14 @@ public class SearchController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		/**
-		 * This method handles the retrieval of the search keyword entered by
-		 * the user.
-		 */
+
 		String keyword = request.getParameter("keyword");
 
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_PRODUCT);
 		request.setAttribute("keyword", keyword);
-		request.setAttribute("products", dao.getProductByKeyword(keyword));
-		/**
-		 * Redirect to the search results page after the list of students
-		 * matching the keywords has been retrieved.
-		 */
+		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("products", dao.getProductByKeyword(keyword));
 
 		view.forward(request, response);
 	}

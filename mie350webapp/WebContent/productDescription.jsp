@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR" import="com.mie.model.*" import="com.mie.dao.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -30,18 +30,30 @@
 	<%@ include file="navbar.jsp"%>
 
 
-
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<%@ include file="sidebar_filter.jsp"%>
 			
 			<div class="col-sm-8 text-left">
-			
-				<h1>Product</h1>
 				
-				<img src="img/Desk.jpg"> <br />
-				<br> Desk $XX <br>
-				<br> 5 stars <br>
+				<table border=1>
+					<thead>
+					<c:out value="${selectedProduct.getProductName()}" />
+					$ <c:out value="${selectedProduct.getProductPrice()}" />
+					</thead>
+					<tbody>
+						<tr>
+						<img src="img/${selectedProduct.getProductImage()}" width="600">
+						</tr>
+						
+						<tr>
+						<c:out value="${selectedProduct.getProductDesc()}" />
+						</tr>
+						
+						<tr>
+						Get the product: <c:out value="${selectedProduct.getProductLink()}" />
+						</tr>
+					</tbody>
+				</table>
 
 			</div>
 		</div>

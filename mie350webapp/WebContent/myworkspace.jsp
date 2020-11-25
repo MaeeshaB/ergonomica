@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -35,16 +35,38 @@
 			</div>
 			<div class="col-sm-8 text-left">
 				<h1>My Workspace</h1>
-
+				${wsItems.get(0).getProductid()}
+				<table border=0>
+					<tbody>
+						<c:forEach items="${wsItems}" var="item">
+							<tr>
+								${item.getProductid()}
+								<c:out value="${item.getProductid()}" />
+								<br>
+								<img src="img/${item.getProductPhoto()}" width="200" height="200">
+								<br>
+								
+								<form method="POST" action='MyWorkspaceController'>
+								<input
+									type="button" class="btn btn-link" name="action" value="delete">&#9825;</input>
+								</form>
+								
+								<a href="MyWorkspaceController?action=delete&prodid=1001&userid=admin01">test</a>
+								
+								<br> <br>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 				
 			</div>
 			<div class="col-sm-2 sidenav">
 				<!-- You can put right sidebar links here if you want to. -->
 			</div>
 		</div>
+		
+		<%@ include file="footer.jsp"%>
 	</div>
-
-	<%@ include file="footer.jsp"%>
 
 
 </body>
