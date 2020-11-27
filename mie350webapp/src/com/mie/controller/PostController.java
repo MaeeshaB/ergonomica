@@ -3,6 +3,7 @@ package com.mie.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -16,11 +17,13 @@ import com.mie.dao.PostDao;
 import com.mie.dao.ProductDao;
 import com.mie.dao.UserDao;
 import com.mie.model.User;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class PostController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	private static String SHARE_YOUR_SETUP = "/shareYourSetup.jsp";
 	private PostDao dao;
 
 	/**
@@ -34,14 +37,23 @@ public class PostController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String forward = "";
+		String forward = SHARE_YOUR_SETUP;
 		String action = request.getParameter("action");
-
+		
+		String postid = request.getParameter("postid");
+		String userid = request.getParameter("userid");
+		
 		if (action.equalsIgnoreCase("like")) {
-			int postId = Integer.parseInt(request.getParameter("postId"));
-			dao.like(postId);
+			dao.like(postid, userid);
+		} else if (action.equalsIgnoreCase("unlike")) {
+			dao.unlike(postid, userid);
+		}
+		else if (action.equalsIgnoreCase("getPosts")) {
+			request.setAttribute("posts", dao.getAllPosts());
 		}
 
+		request.setAttribute("posts", dao.getAllPosts());
+		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}

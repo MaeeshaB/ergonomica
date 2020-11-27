@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -28,51 +28,89 @@
 <body>
 
 	<%@ include file="navbar.jsp"%>
-	
-	<%
-	User user = (User) session.getAttribute("currentSessionUser");
-	//<!-- <a class="btn btn-warning" href="MyWorkspaceController?action=save&userid=<c:out value="${user.getUserId()}"/>&prodid=value="${product.getProductId()}"">Like</a> -->
-	%>
-
 
 	<div class="container-fluid text-center">
+		
 		<div class="row content">
-			<%@ include file="sidebar_filter.jsp"%>
 			
+			<div class="col-sm-2 sidenav">
+				Products:<br />
+				<br>
+				<a class="btn btn-default" href="FilterController?action=filter&type=desk">Desks</a>
+				<br>
+				<a class="btn btn-default" href="FilterController?action=filter&type=chair">Chairs</a>
+				<br>
+				<a class="btn btn-default" href="FilterController?action=filter&type=lighting">Lighting</a>
+				<br>
+				<a class="btn btn-default" href="FilterController?action=filter&type=keyboard">Keyboard</a>
+				<br>
+				<a class="btn btn-default" href="FilterController?action=filter&type=monitor">Monitor</a>
+				<br>
+				<a class="btn btn-default" href="FilterController?action=filter&type=mouse">Mouse</a>
+				<br>
+				<a class="btn btn-default" href="FilterController?action=filter&type=hardware">Hardware</a>
+				<br>
+				<a class="btn btn-default" href="FilterController?action=filter&type=software">Software</a>
+				
+				</div>
+				
 			<div class="col-sm-8 text-left">
 			
 				<h1>Search Results</h1>
-				<left>
-					<form method="POST" action='SearchController' name="frmAddUser">
+				<div class="col-md-8">
+				         <form method="POST" action='SearchController' name="frmAddUser">
 						Keyword: <input type="text" name="keyword"
 							value="<c:out value="${product.searchword}" />"><input
 							type="submit" class="btn btn-info" value="Submit" />
 					</form>
-				</left>
+				 </div>
+				 <div class="col-md-4">
+				    <a class="btn btn-default" href="suggestedProducts.jsp">Take Quiz</a>
+				 </div>
 				
+				<br> <br>
+				 
+				 <a href="FilterController?action=Price_LH">Price LH</a>
+				 <a href="FilterController?action=Price_HL">Price HL</a>
+				 <a href="FilterController?action=Name_AZ">Name LH</a>
+				 <a href="FilterController?action=Name_ZA">Name HL</a>
+				
+				<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+				<button type="button" class="btn btn-info">Sort By</button>
+					  <div class="btn-group" role="group">
+					    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+					    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" style="">
+					      <a class="dropdown-item" href="FilterController?action=Price_LH">Price: Low to High</a>
+					      <a class="dropdown-item" href="FilterController?action=Price_HL">Price: High to Low</a>
+					   	  <a class="dropdown-item" href="FilterController?action=Name_AZ">Name: A to Z</a>
+					      <a class="dropdown-item" href="FilterController?action=Name_ZA">Name: Z to A</a>
+					    </div>
+					  </div>
+				</div>
 				
 				<br> <br>
 				
 				<center>
-				
-				<table border=0>
-						<tbody>
-							<c:forEach items="${products}" var="product">
-								<tr>
-								<img src="img/${product.getProductImage()}">
-								<c:out value="${product.getProductName()}" />
-								<c:out value="${product.getProductDesc()}" />
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+				<c:forEach items="${products}" var="product">
+					<div class="col-md-4">
+					<img src="img/${product.getProductImage()}" width="200" height="200">
+					<br>
+					<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${product.getProductid()}"/>">${product.getProductName()}</a>
+					<br>
+					<a href="MyWorkspaceController?action=save&prodid=value="${product.getProductid()}"">&#9825;</a>
+					$ <c:out value="${product.getProductPrice()}" />
+					<br>
+					</div>
+					
+				</c:forEach>
 				</center>
 
 			</div>
+			
+			<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 		</div>
 	</div>
 
-	<%@ include file="footer.jsp"%>
 
 
 </body>
