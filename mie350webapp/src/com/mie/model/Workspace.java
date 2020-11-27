@@ -2,6 +2,7 @@ package com.mie.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -10,18 +11,8 @@ public class Workspace {
 	 * This class contains all of the relevant information, and getter/setter
 	 * methods for the Member object.
 	 */
-	//private int prod_id;
 	private String user_id;
 	private Vector<Product> products = new Vector<Product>();
-
-	/*public int getProductid() {
-		return prod_id;
-	}
-
-	public void setProductid(int prodid) {
-		this.prod_id = prodid;
-	}*/
-	
 
 	public String getUserid() {
 		return user_id;
@@ -39,10 +30,27 @@ public class Workspace {
 		this.products.add(product);
 	}
 
-	/*public void setAllProducts(List<Product> products) {
-		this.products = new ArrayList<Product> (products);
-		//this.products = products;
-	}*/
+	public String ProductSaved(int newprodid) {
+		Iterator<Product> i = products.iterator();
+		while (i.hasNext()) {
+			Product curProd = i.next();
+			if (curProd.getProductid() == newprodid) {
+				return "&#x2665;";
+			}
+		}
+		return "&#9825;";
+	}
+	
+	public String addOrDelete(int newprodid) {
+		Iterator<Product> i = products.iterator();
+		while (i.hasNext()) {
+			Product curProd = i.next();
+			if (curProd.getProductid() == newprodid) {
+				return "delete";
+			}
+		}
+		return "save";
+	}
 
 	@Override
 	public String toString() {

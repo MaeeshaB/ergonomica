@@ -24,13 +24,31 @@ public class WorkspaceDao {
 	}
 	
 	
-	public static void addProduct(int userid, int prodid) {
-		//insert into the user_workspace relation
+	public static void addProduct(String userid, int prodid) {
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("insert into user_workspace(prod_id,user_id) values (?, ?)");
+			preparedStatement.setInt(1, prodid);
+			preparedStatement.setString(2, userid);
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
 	public static void deleteProduct(String userid, int prodid) {
-		//delete from the user_workspace relation
+		
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("delete from user_workspace WHERE prod_id = "+prodid+" AND user_id='"+ userid +"'");
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static Workspace getAllSavedItems(String userid) {

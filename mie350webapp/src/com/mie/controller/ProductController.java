@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mie.dao.ProductDao;
 
@@ -34,9 +35,10 @@ public class ProductController extends HttpServlet {
 		String forward = PRODUCT_DESC;
 		String action = request.getParameter("action");
 		int selectedProduct = Integer.parseInt(request.getParameter("prodId"));
+		HttpSession session = request.getSession(true);
 		
 		if (action.equalsIgnoreCase("select")) {
-			request.setAttribute("selectedProduct", dao.getProductById(selectedProduct));
+			session.setAttribute("selectedProduct", dao.getProductById(selectedProduct));
 		} 
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);

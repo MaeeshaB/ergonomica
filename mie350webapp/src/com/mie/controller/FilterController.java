@@ -35,13 +35,25 @@ public class FilterController extends HttpServlet {
 		String forward = SEARCH_PRODUCT;
 		String action = request.getParameter("action");
 		String type = request.getParameter("type");
+		HttpSession session = request.getSession(true);
+
+		if (action.equalsIgnoreCase("filter")) {
+			session.setAttribute("products", dao.getProductByType(type));
+		}
+		RequestDispatcher view = request.getRequestDispatcher(forward);
+		view.forward(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		String forward = SEARCH_PRODUCT;
+		String action = request.getParameter("action");
 		
 		HttpSession session = request.getSession(true);
 		List<Integer> prodIds = dao.getProductIdList((List<Product>) session.getAttribute("products"));
 
-		if (action.equalsIgnoreCase("filter")) {
-			session.setAttribute("products", dao.getProductByType(type));
-		} else if (action.equalsIgnoreCase("Price_LH")) {
+		if (action.equalsIgnoreCase("Price_LH")) {
 			session.setAttribute("products", dao.getSortedProducts(prodIds, "ASC", "prod_price"));
 		} else if (action.equalsIgnoreCase("Price_HL")) {
 			session.setAttribute("products", dao.getSortedProducts(prodIds, "DESC", "prod_price"));
@@ -52,12 +64,7 @@ public class FilterController extends HttpServlet {
 		}
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
-	}
-	
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		request.setAttribute("yes", "true");
+		
 	}
 	
 	

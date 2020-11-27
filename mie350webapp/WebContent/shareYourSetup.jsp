@@ -34,40 +34,32 @@
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-8 text-center">
-				<div class="w-75 p-3">
-				</div>
+			<div class="col-sm-3"></div>
+			
+			<div class="col-sm-8 text-left">
+
 				<h1>Workspace Inspiration</h1>
 				
-				<table border=0>
-					<tbody>
-						<c:forEach items="${posts}" var="post">
-							<tr>
-								<c:out value="${post.getPostName()}" />
-								<br>
-								<img src="img/${post.getPostPhoto()}" width="200" height="200">
-								<br>
-								
-								<a href="PostController?action=${post.liked("admin01")}&postid=<c:out value="${post.getPostId()}"/>&userid=admin01" >${post.ContainsUserId("admin01")}</a>
-								<br>
-								<c:out value="${post.getPostDesc()}" />
-								<br> <br>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+				<c:forEach items="${posts}" var="post">
+					<div class="card border-secondary mb-4 text-center" style="max-width: 28rem;">
+					  <div class="card-header">${post.getPostName()}</div>
+					  <div class="card-body">
+					  <img class="card-img-top" src="img/${post.getPostPhoto()}" alt="Card image cap">
+					    <br>
+					    <a href="PostController?action=${post.liked("admin01")}&postid=<c:out value="${post.getPostId()}"/>&userid=admin01" >${post.ContainsUserId("admin01")}</a>
+						<p class="card-text">${post.getPostDesc()}</p>
+					  </div>
+					</div>
+				</c:forEach>
 			
 				<br /> <br />
 			</div>
 			
-			<div class="col-sm-2 sidenav">
-			</div>
+			
+			
+			<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 		</div>
 		
-		<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 	</div>
 
 

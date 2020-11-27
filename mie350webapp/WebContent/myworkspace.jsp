@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR" import="com.mie.model.*"%>
+	pageEncoding="EUC-KR" import="com.mie.model.*" import="com.mie.dao.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
@@ -33,39 +35,33 @@
 			<div class="col-sm-2 sidenav">
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
-			<div class="col-sm-8 text-left">
+			<div class="col-sm-10 text-left">
 				<h1>My Workspace</h1>
-				${wsItems.get(0).getProductid()}
-				<table border=0>
-					<tbody>
-						<c:forEach items="${wsItems}" var="item">
-							<tr>
-								${item.getProductid()}
-								<c:out value="${item.getProductid()}" />
-								<br>
-								<img src="img/${item.getProductPhoto()}" width="200" height="200">
-								<br>
-								
-								<form method="POST" action='MyWorkspaceController'>
-								<input
-									type="button" class="btn btn-link" name="action" value="delete">&#9825;</input>
-								</form>
-								
-								<a href="MyWorkspaceController?action=delete&prodid=1001&userid=admin01">test</a>
-								
-								<br> <br>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
 				
-			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
+				<table class="table">
+					<c:forEach begin="0" end="${wsItems.getProducts().size()}" step="3" var="i">
+							<tr>
+			                <c:forEach begin="${i}" end="${i+2}" var="j">
+				                <td>
+				                <c:if test="${j < wsItems.getProducts().size()}">
+				                	<img src="img/${wsItems.getProducts().get(j).getProductImage()}" width="200" height="200">
+									<br>
+										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${wsItems.getProducts().get(j).getProductid()}"/>">${wsItems.getProducts().get(j).getProductName()}</a>
+										<br>
+										<a href="MyWorkspaceController?location=ws&action=${wsItems.addOrDelete(wsItems.getProducts().get(j).getProductid())}&prodid=${wsItems.getProducts().get(j).getProductid()}&userid=admin01">${wsItems.ProductSaved(wsItems.getProducts().get(j).getProductid())}</a>
+									$ <c:out value="${wsItems.getProducts().get(j).getProductPrice()}" />
+										<br>
+								</c:if>
+				                </td>
+			             	</c:forEach>
+			            </tr>
+			        </c:forEach>
+		        </table>		
+					
 			</div>
 		</div>
 		
-		<%@ include file="footer.jsp"%>
+		<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 	</div>
 
 

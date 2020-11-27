@@ -113,16 +113,7 @@ public class Product {
 		return "product [prod_id=" + prod_id + ", prod_name=" + prod_name
 				+ ", prod_desc=" + prod_desc + "prod_type="+ prod_type + ", prod_price=" + prod_price 
 				+", prod_category=" + prod_category + ", prod_image=" + prod_image 
-				+ ", prod_link=" + prod_link +"]";
-	}
-	
-	public String productivityToString() {
-		return "product_ivity [prod_id=" + prod_id + ", prod_name=" + prod_name
-				+", prod_category=" + prod_category + ", prod_brand=" + prod_brand +"]";
-	}
-	
-	public String productErgoToString() {
-		return "product_ergonomic [prod_id=" + prod_id + ", prod_name=" + prod_name
-				+", prod_category=" + prod_category + ", prod_supplier=" + prod_supplier +"]";
+				+ ", prod_link=" + prod_link + ", prod_brand=" + prod_brand 
+				+", prod_supplier=" + prod_supplier + ", prod_persona = " + prod_persona + "]";
 	}
 }

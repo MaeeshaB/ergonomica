@@ -21,6 +21,7 @@ footer {
 	background-color: #adb5bd;
 	color: white;
 	padding: 15px;
+	height: 115x; 
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -31,5 +32,6 @@ footer {
 	}
 	.row.content {
 		height: auto;
+		padding-bottom: 115px;
 	}
 }

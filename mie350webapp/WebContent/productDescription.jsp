@@ -32,34 +32,40 @@
 
 	<div class="container-fluid text-center">
 		<div class="row content">
+			<div class="col-sm-2"></div>
 			
 			<div class="col-sm-8 text-left">
-				
-				<table border=1>
-					<thead>
-					<c:out value="${selectedProduct.getProductName()}" />
-					$ <c:out value="${selectedProduct.getProductPrice()}" />
-					</thead>
-					<tbody>
-						<tr>
-						<img src="img/${selectedProduct.getProductImage()}" width="600">
-						</tr>
-						
-						<tr>
-						<c:out value="${selectedProduct.getProductDesc()}" />
-						</tr>
-						
-						<tr>
-						Get the product: <c:out value="${selectedProduct.getProductLink()}" />
-						</tr>
-					</tbody>
-				</table>
 
+			<div class="card mb-4">
+			  <h3 class="card-header">${selectedProduct.getProductName()}</h3>
+			  <div class="card-body">
+			    <h5 class="card-title">$${selectedProduct.getProductPrice()}</h5>
+			    <a href="MyWorkspaceController?location=prodDesc&action=${wsItems.addOrDelete(selectedProduct.getProductid())}&prodid=${selectedProduct.getProductid()}&userid=admin01">${wsItems.ProductSaved(selectedProduct.getProductid())}</a>
+				</div>
+			  <img class="card-img-top" src="img/${selectedProduct.getProductImage()}">
+					  
+			  <div class="card-body">
+			    <p class="card-text">${selectedProduct.getProductDesc()}</p>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			    <li class="list-group-item">Details</li>
+			  </ul>
+			  
+			  <div class="card-body">
+			    <p class="card-text">${selectedProduct.getProductType()}</p>
+			    <p class="card-text">${selectedProduct.getProductBrand()}</p>
+			  	<p class="card-text">${selectedProduct.getProductSupplier()}</p>
+			  </div>
+			  
+			  <br>
+			  <div class="card-body">
+			    <a href="${selectedProduct.getProductLink()}" class="card-link">Get the Product</a>
+			  </div>
+			</div>
+			
 			</div>
 		</div>
 	</div>
-
-	<%@ include file="footer.jsp"%>
 
 
 </body>

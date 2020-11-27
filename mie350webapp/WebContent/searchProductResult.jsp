@@ -33,7 +33,7 @@
 		
 		<div class="row content">
 			
-			<div class="col-sm-2 sidenav">
+			<div class="col-sm-2 sidenav" background-color:="#d3d8e0">
 				Products:<br />
 				<br>
 				<a class="btn btn-default" href="FilterController?action=filter&type=desk">Desks</a>
@@ -64,48 +64,50 @@
 							type="submit" class="btn btn-info" value="Submit" />
 					</form>
 				 </div>
-				 <div class="col-md-4">
+				 <div class="col-md-2">
 				    <a class="btn btn-default" href="suggestedProducts.jsp">Take Quiz</a>
 				 </div>
 				
 				<br> <br>
-				 
-				 <a href="FilterController?action=Price_LH">Price LH</a>
-				 <a href="FilterController?action=Price_HL">Price HL</a>
-				 <a href="FilterController?action=Name_AZ">Name LH</a>
-				 <a href="FilterController?action=Name_ZA">Name HL</a>
-				
-				<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-				<button type="button" class="btn btn-info">Sort By</button>
-					  <div class="btn-group" role="group">
-					    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-					    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" style="">
-					      <a class="dropdown-item" href="FilterController?action=Price_LH">Price: Low to High</a>
-					      <a class="dropdown-item" href="FilterController?action=Price_HL">Price: High to Low</a>
-					   	  <a class="dropdown-item" href="FilterController?action=Name_AZ">Name: A to Z</a>
-					      <a class="dropdown-item" href="FilterController?action=Name_ZA">Name: Z to A</a>
-					    </div>
-					  </div>
-				</div>
+
+				<form method="POST" action="FilterController">
+				  <select name="action" class="form-control">
+				    <option value="Price_LH">Price: Low to High</option>
+				    <option value="Price_HL">Price: High to Low</option>
+				    <option value="Name_AZ">Name: A to Z</option>
+				    <option value="Name_ZA">Name: Z to A</option>
+				  </select>
+				  <input class="btn btn-default" type="submit" value="Submit">
+				</form>
 				
 				<br> <br>
 				
 				<center>
-				<c:forEach items="${products}" var="product">
-					<div class="col-md-4">
-					<img src="img/${product.getProductImage()}" width="200" height="200">
-					<br>
-					<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${product.getProductid()}"/>">${product.getProductName()}</a>
-					<br>
-					<a href="MyWorkspaceController?action=save&prodid=value="${product.getProductid()}"">&#9825;</a>
-					$ <c:out value="${product.getProductPrice()}" />
-					<br>
-					</div>
-					
-				</c:forEach>
+				
+				<table class="table">
+					<c:forEach begin="0" end="${products.size()}" step="3" var="i">
+							<tr>
+			                <c:forEach begin="${i}" end="${i+2}" var="j">
+				                <td>
+				                <c:if test="${j < products.size()}">
+				                	<img src="img/${products.get(j).getProductImage()}" width="200" height="200">
+									<br>
+										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${products.get(j).getProductid()}"/>">${products.get(j).getProductName()}</a>
+										<br>
+										<a href="MyWorkspaceController?location=search&action=${wsItems.addOrDelete(products.get(j).getProductid())}&prodid=${products.get(j).getProductid()}&userid=admin01">${wsItems.ProductSaved(products.get(j).getProductid())}</a>
+									$ <c:out value="${products.get(j).getProductPrice()}" />
+										<br>
+								</c:if>
+				                </td>
+			             	</c:forEach>
+			            </tr>
+			        </c:forEach>
+		        </table>
+				
 				</center>
-
+				
 			</div>
+			
 			
 			<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 		</div>

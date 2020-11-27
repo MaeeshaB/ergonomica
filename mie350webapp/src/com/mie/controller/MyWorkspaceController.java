@@ -22,6 +22,8 @@ public class MyWorkspaceController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static String WORKSPACE = "/myworkspace.jsp";
+	private static String SEARCH_PRODUCT = "/searchProductResult.jsp";
+	private static String PRODUCT_DESC = "/productDescription.jsp";
 
 	private WorkspaceDao dao;
 
@@ -36,14 +38,24 @@ public class MyWorkspaceController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String forward = WORKSPACE;
+		String forward = "";
 		String action = request.getParameter("action");
 		String userid = request.getParameter("userid");
+		String prodId = request.getParameter("prodid");
+		String location = request.getParameter("location");
+		
+		if (location.equalsIgnoreCase("search")) {
+			forward = SEARCH_PRODUCT;
+		} else if (location.equalsIgnoreCase("ws")){
+			forward = WORKSPACE;
+		} else {
+			forward = PRODUCT_DESC;
+		}
 
 		if (action.equalsIgnoreCase("save")) {
-			//int prodId = Integer.parseInt(request.getParameter("prodId"));
-			//dao.addProduct(prodid);
+			dao.addProduct(userid, Integer.parseInt(prodId));
 		} else if (action.equalsIgnoreCase("delete")) {
+			dao.deleteProduct(userid, Integer.parseInt(prodId));
 		}
 		
 
@@ -51,7 +63,7 @@ public class MyWorkspaceController extends HttpServlet {
 		List<Product> products = workspace.getProducts();
 		
 		HttpSession session = request.getSession(true);
-		session.setAttribute("wsItems", products);
+		session.setAttribute("wsItems", workspace);
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);

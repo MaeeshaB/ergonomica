@@ -48,11 +48,8 @@ public class ProductDao {
 				product.setProductImage(rs.getString("prod_image"));
 				product.setProductLink(rs.getString("prod_link"));
 				product.setProductLink(rs.getString("prod_persona"));
-				if (rs.getString("prod_category") == "productivity") {
-					product.setProductBrand(rs.getString("prod_brand"));
-				} else if (rs.getString("prod_category") == "ergonomics") {
-					product.setProductBrand(rs.getString("prod_supplier"));
-				}
+				product.setProductBrand(rs.getString("prod_brand"));
+				product.setProductSupplier(rs.getString("prod_supplier"));
 				products.add(product);
 			}
 		} catch (SQLException e) {
@@ -91,11 +88,8 @@ public class ProductDao {
 				product.setProductImage(rs.getString("prod_image"));
 				product.setProductLink(rs.getString("prod_link"));
 				product.setProductPersona(rs.getString("prod_persona"));
-				if (rs.getString("prod_category") == "productivity") {
-					product.setProductBrand(rs.getString("prod_brand"));
-				} else if (rs.getString("prod_category") == "ergonomics") {
-					product.setProductBrand(rs.getString("prod_supplier"));
-				}
+				product.setProductBrand(rs.getString("prod_brand"));
+				product.setProductSupplier(rs.getString("prod_supplier"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -128,11 +122,8 @@ public class ProductDao {
 				product.setProductImage(rs.getString("prod_image"));
 				product.setProductLink(rs.getString("prod_link"));
 				product.setProductPersona(rs.getString("prod_persona"));
-				if (rs.getString("prod_category") == "productivity") {
-					product.setProductBrand(rs.getString("prod_brand"));
-				} else if (rs.getString("prod_category") == "ergonomics") {
-					product.setProductBrand(rs.getString("prod_supplier"));
-				}
+				product.setProductBrand(rs.getString("prod_brand"));
+				product.setProductSupplier(rs.getString("prod_supplier"));
 				products.add(product);
 			}
 		} catch (SQLException e) {
@@ -166,12 +157,9 @@ public class ProductDao {
 				product.setProductCategory(rs.getString("prod_category"));
 				product.setProductImage(rs.getString("prod_image"));
 				product.setProductLink(rs.getString("prod_link"));
-				product.setProductLink(rs.getString("prod_persona"));
-				if (rs.getString("prod_category") == "productivity") {
-					product.setProductBrand(rs.getString("prod_brand"));
-				} else if (rs.getString("prod_category") == "ergonomics") {
-					product.setProductBrand(rs.getString("prod_supplier"));
-				}
+				product.setProductPersona(rs.getString("prod_persona"));
+				product.setProductBrand(rs.getString("prod_brand"));
+				product.setProductSupplier(rs.getString("prod_supplier"));
 				products.add(product);
 			}
 		} catch (SQLException e) {

@@ -27,7 +27,7 @@
         <a class="nav-link" href="search.jsp">Search</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="MyWorkspaceController?action=getItems&userid=admin01">My Workspace</a>
+        <a class="nav-link" href="MyWorkspaceController?location=ws&action=getItems&userid=admin01">My Workspace</a>
       </li>
       </li>
     </ul>
