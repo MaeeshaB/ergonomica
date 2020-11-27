@@ -22,28 +22,79 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+	<style>
+	    .ui-controlgroup-vertical {
+	      width: 150px;
+	    }
+	    .ui-controlgroup.ui-controlgroup-vertical > button.ui-button,
+	    .ui-controlgroup.ui-controlgroup-vertical > .ui-controlgroup-label {
+	      text-align: center;
+	    }
+	    #car-type-button {
+	      width: 120px;
+	    }
+	    .ui-controlgroup-horizontal .ui-spinner-input {
+	      width: 20px;
+	    }
+    </style>
+
+
 </head>
+
 <body>
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Suggested Products</h1>
-				
-				<center>
-					<form method="POST" action='ProductController'>
-						<input type="submit" class="btn btn-info" value="Submit" />
-					</form>
-				</center>
-				
-				<a href="search.jsp">Skip</a>
-
-			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
+			
+				<h1>WFH Goals Questionnaire</h1>
+				<h4><i>Tell us a bit about your current setup and your setup goals so our algorithm 
+						can tailor the product suggestions to fit your needs :)</i></h4> <br>
+				<form>
+					<fieldset>
+						<legend>Who are you shopping for today? (check all that apply)</legend>
+						<div class = "form-check">
+							<label class = "form-check-label">
+								<input class = "form-check-input" type = "checkbox" value = "" cheked = "">
+								Myself
+								<input class = "form-check-input" type = "checkbox" value = "" cheked = "">
+								A friend or loved one <br>
+								<input class = "form-check-input" type = "checkbox" value = "" cheked = "">
+								A child
+								<input class = "form-check-input" type = "checkbox" value = "" cheked = "">
+								A student (high school/university)
+								<input class = "form-check-input" type = "checkbox" value = "" cheked = "">
+								A professional
+							</label>
+						</div>
+						
+						<br>
+						<legend>Are you looking to retrofit your current setup or are you starting from scratch?</legend>
+						<div class= "form-check">
+							<label class= "form-check-label">
+								<input class= "form-check-input" type= "radio" name= "optionsRadios" id="retrofit" value= "option1" cheked = "">
+								Retrofitting my current setup <br>
+								<input class= "form-check-input" type= "radio" name= "optionsRadios" id="scratch" value= "option2" cheked = "">
+								Starting from scratch
+							</label>
+						</div>
+						
+						<br>
+						<legend>Are you looking for essentials or accessories?</legend>
+						<div class= "form-check">
+							<label class= "form-check-label">
+								<input class= "form-check-input" type= "radio" name= "optionsRadios" id="essentials" value= "option1" cheked = "">
+								Essentials <br>
+								<input class= "form-check-input" type= "radio" name= "optionsRadios" id="accessories" value= "option2" cheked = "">
+								Accessories <br>
+								<input class= "form-check-input" type= "radio" name= "optionsRadios" id="both" value= "option3" cheked = "">
+								Both <br>
+							</label>
+						</div>
+						
+					</fieldset>
+				</form>
 			</div>
 		</div>
 	</div>
