@@ -36,15 +36,16 @@
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-10 text-left">
+				<br></br> 
 				<h1>My Workspace</h1>
 				
 				<table class="table">
 					<c:forEach begin="0" end="${wsItems.getProducts().size()}" step="3" var="i">
 							<tr>
 			                <c:forEach begin="${i}" end="${i+2}" var="j">
-				                <td>
+				                <td align="center"> 
 				                <c:if test="${j < wsItems.getProducts().size()}">
-				                	<img src="img/${wsItems.getProducts().get(j).getProductImage()}" width="200" height="200">
+				                	<img src="img/${wsItems.getProducts().get(j).getProductImage()}" height ="200">
 									<br>
 										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${wsItems.getProducts().get(j).getProductid()}"/>">${wsItems.getProducts().get(j).getProductName()}</a>
 										<br>
@@ -57,13 +58,11 @@
 			            </tr>
 			        </c:forEach>
 		        </table>		
-					
+					<%@ include file="footer.jsp"%>
 			</div>
 		</div>
 		
-		<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 	</div>
-
 
 </body>
 </html>

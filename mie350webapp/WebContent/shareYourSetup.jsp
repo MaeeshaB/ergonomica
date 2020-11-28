@@ -37,7 +37,7 @@
 			<div class="col-sm-3"></div>
 			
 			<div class="col-sm-8 text-left">
-
+				<br></br> 
 				<h1>Workspace Inspiration</h1>
 				
 				<c:forEach items="${posts}" var="post">
@@ -57,7 +57,7 @@
 			
 			
 			
-			<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
+			<%@ include file="footer.jsp"%>
 		</div>
 		
 	</div>

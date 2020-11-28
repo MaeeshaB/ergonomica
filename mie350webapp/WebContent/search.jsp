@@ -37,6 +37,7 @@
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
+				<br></br> 
 				<h1>Search</h1>
 
 				<center>

@@ -88,9 +88,9 @@
 					<c:forEach begin="0" end="${products.size()}" step="3" var="i">
 							<tr>
 			                <c:forEach begin="${i}" end="${i+2}" var="j">
-				                <td>
+				                <td align="center">
 				                <c:if test="${j < products.size()}">
-				                	<img src="img/${products.get(j).getProductImage()}" width="200" height="200">
+				                	<img src="img/${products.get(j).getProductImage()}" height="200">
 									<br>
 										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${products.get(j).getProductid()}"/>">${products.get(j).getProductName()}</a>
 										<br>
@@ -107,14 +107,12 @@
 				</center>
 				
 			</div>
+			<%@ include file="footer.jsp"%>
 			
 			
-			<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 		</div>
+		
 	</div>
-
-
-
 </body>
 </html>
 

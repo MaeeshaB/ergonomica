@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -99,6 +99,7 @@
 			<div class="col-sm-8 text-left">
 				<!-- Put main information here -->
 				<!-- Put main information here -->
+				<br></br> 
 				<h1>What is Ergonomica?</h1>
 				<h4>Statement of the purpose of the application:</h4>
 				Ergonomica is a web app designed with the purpose of
@@ -140,83 +141,110 @@
 				We also wanted to assist with the long term working impacts of COVID-19, 
 				which is why we have developed this concept for our undergraduate MIE350 
 				course project.
-				
-				
-				<h2>Meet The Team</h2>
+				<br></br>
 				<div class="row">
-				  <div class="column">
-				    <div class="card">
-				      <img src="img/placeholderPerson.jpg" alt="Sarah" style="width:100%">
-				      <div class="container">
-				        <h3>Sarah Angelou</h3>
-				        <p class="title">role</p>				        
-				      </div>
-				    </div>
-				  </div>
 				
-				  <div class="column">
-				    <div class="card">
-				      <img src="img/Audrey.jpg" alt="Audrey" style="width:100%">
-				      <div class="container">
-				        <h3>Audrey Benmergui</h3>
-				        <p class="title">role</p>				        
-				      </div>
+				<div class="column">
+				<div class="jumbotron">
+  					<h1 class="display-3">Meet the Team!</h1>
+  					<div class="container">				        
 				    </div>
-				  </div>
 				</div>
-				
-				<div class="row">
-				  <div class="column">
+				</div>
+	
+				   <div class="column">
 				    <div class="card">
-				      <img src="img/Maeesha.jpg" alt="Maeesha" style="width:100%">
+				      <img src="img/about/Maeesha.jpg" alt="Maeesha" style="width:100%">
 				      <div class="container">
 				        <h3>Maeesha Biswas</h3>
-				        <p class="title">role</p>				        
+				        <span class="badge badge-pill badge-primary">Project Manager</span>	
+				        <span class="badge badge-pill badge-info">Developer</span>  
+				        <span class="badge badge-pill badge-dark">DB Manager</span>
+				        <br></br>    
+				      </div>
+				    </div>
+				  </div>
+
+				  
+				  <div class="column">
+				    <div class="card">
+				      <img src="img/about/Sarah.jpg" alt="Sarah" style="width:100%">
+				      <div class="container">
+				        <h3>Sarah Angelou</h3>
+				        <span class="badge badge-pill badge-info">Development Lead</span> 	
+				        <br></br> 		        
 				      </div>
 				    </div>
 				  </div>
 				  
-				  <div class="column">
+				</div>
+				
+				<div class="row">
+				
+				<div class="column">
 				    <div class="card">
-				      <img src="img/placeholderPerson.jpg" alt="Lincoln" style="width:100%">
+				      <img src="img/about/placeholderPerson.jpg" alt="Lincoln" style="width:100%">
 				      <div class="container">
 				        <h3>Lincoln Leung</h3>
-				        <p class="title">role</p>				        
+				        <span class="badge badge-pill badge-info">Developer</span>
+				        <span class="badge badge-pill badge-warning">Writing & Research</span>  	
+				        <br></br> 			        
 				      </div>
 				    </div>
 				  </div>
-				  
-				  <div class="column">
+				<div class="column">
 				    <div class="card">
-				      <img src="img/placeholderPerson.jpg" alt="Matt" style="width:100%">
+				      <img src="img/about/Matt.jpg" alt="Matt" style="width:100%">
 				      <div class="container">
 				        <h3>Matt Lindzon</h3>
-				        <p class="title">role</p>				        
+				        <span class="badge badge-pill badge-success">Designer</span>
+				        <span class="badge badge-pill badge-warning">Writing & Research</span>	
+				        <br></br> 	        
 				      </div>
 				    </div>
 				  </div>
-				</div>
 				 
-				<div class="row">
 				  <div class="column">
 				    <div class="card">
-				      <img src="img/placeholderPerson.jpg" alt="Justine" style="width:100%">
+				      <img src="img/about/Justine.jpg" alt="Justine" style="width:100%">
 				      <div class="container">
 				        <h3>Justine Steven</h3>
-				        <p class="title">role</p>				        
+				        <span class="badge badge-pill badge-success">Designer</span>
+				        <span class="badge badge-pill badge-warning">Writing & Research</span>
+				        <br></br> 					        
 				      </div>
 				    </div>
 				  </div>
 				  
+				</div>
+				
+				<div class="row">
+				  
 				  <div class="column">
 				    <div class="card">
-				      <img src="img/placeholderPerson.jpg" alt="Kellise" style="width:100%">
+				      <img src="img/about/Audrey.jpg" alt="Audrey" style="width:100%">
 				      <div class="container">
-				        <h3>Kellise Williams</h3>
-				        <p class="title">role</p>				        
+				        <h3>Audrey Benmergui</h3>
+				        <span class="badge badge-pill badge-success">Designer</span>
+				        <span class="badge badge-pill badge-info">Developer</span> 
+				        <span class="badge badge-pill badge-warning">Writing & Research</span>		
+				        <br></br> 		        
 				      </div>
 				    </div>
 				  </div>
+				
+				  <div class="column">
+				    <div class="card">
+				      <img src="img/about/placeholderPerson.jpg" alt="Kellise" style="width:100%">
+				      <div class="container">
+				        <h3>Kellise Williams</h3>
+				        <span class="badge badge-pill badge-success">Designer</span>
+				        <span class="badge badge-pill badge-warning">Writing & Research</span>	
+				        <br></br> 				        
+				      </div>
+				    </div>
+				  </div>
+				  
 				</div>
 				
 				<h3>Disclaimer</h3>
@@ -239,10 +267,11 @@
 			<div class="col-sm-2 sidenav">
 				<!-- You can put right sidebar links here if you want to. -->
 			</div>
+			<%@ include file="footer.jsp"%>
 		</div>
 	</div>
 
-	<%@ include file="footer.jsp"%>
+	
 
 </body>
 </html>
