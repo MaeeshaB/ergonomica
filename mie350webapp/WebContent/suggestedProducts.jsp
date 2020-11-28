@@ -24,23 +24,28 @@
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
 <body>
-
+	<%@ include file="navbar.jsp"%>
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Suggested Products</h1>
-				
+			<br></br>
+			<br></br>
+				<h1>Your Workspace Needs Quiz</h1>		
+				<blockquote class="blockquote">
+  					<p class="mb-0">Fill this out this quiz with your current workspace needs and we'll find the best ergonomics products and productivity tools for you!</p>
+  					
+				</blockquote>
 				<center>
 					<form method="POST" action='ProductController'>
-						<input type="submit" class="btn btn-info" value="Submit" />
+						<input type="submit" class="btn btn-info btn-lg"  style="margin-bottom:10px" value="Submit" />
 					</form>
+					<a href="search.jsp"">
+					<button type="button" class="btn btn-primary">Skip</button>
+					</a>
 				</center>
-				
-				<a href="search.jsp">Skip</a>
-
 			</div>
 			<div class="col-sm-2 sidenav">
 				<!-- You can put right sidebar links here if you want to. -->

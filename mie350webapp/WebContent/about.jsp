@@ -183,7 +183,7 @@
 				
 				<div class="column">
 				    <div class="card">
-				      <img src="img/about/placeholderPerson.jpg" alt="Lincoln" style="width:100%">
+				      <img src="img/about/Lincoln.jpg" alt="Lincoln" style="width:100%">
 				      <div class="container">
 				        <h3>Lincoln Leung</h3>
 				        <span class="badge badge-pill badge-info">Developer</span>
@@ -235,7 +235,7 @@
 				
 				  <div class="column">
 				    <div class="card">
-				      <img src="img/about/placeholderPerson.jpg" alt="Kellise" style="width:100%">
+				      <img src="img/about/Kellise.jpg" alt="Kellise" style="width:100%">
 				      <div class="container">
 				        <h3>Kellise Williams</h3>
 				        <span class="badge badge-pill badge-success">Designer</span>

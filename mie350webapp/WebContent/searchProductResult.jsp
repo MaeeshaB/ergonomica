@@ -55,7 +55,7 @@
 				</div>
 				
 			<div class="col-sm-8 text-left">
-			
+				<br></br> 
 				<h1>Search Results</h1>
 				<div class="col-md-8">
 				         <form method="POST" action='SearchController' name="frmAddUser">

@@ -47,3 +47,7 @@ html, body, #wrapper {
    vertical-align: middle;
    text-align: center;
 }
+
+.center {
+  text-align: center;
+}

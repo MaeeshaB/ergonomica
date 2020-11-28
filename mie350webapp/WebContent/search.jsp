@@ -42,13 +42,18 @@
 
 				<center>
 					<form method="POST" action='SearchController' name="frmAddUser">
-						Keyword: <input type="text" name="keyword"
-							value="<c:out value="${product.searchword}" />"><input
+						Keyword <p></p>
+						<small class="text-muted">Try 'desk' or 'mouse'</small>
+						<br></br>
+						<input type="text" name="keyword"
+							value="<c:out value="${product.searchword}" />">
+							<p></p>
+							<input
 							type="submit" class="btn btn-info" value="Submit" />
 					</form>
 					<br>
 					<a class="btn btn-default" href="suggestedProducts.jsp">Take Quiz</a> 
-					
+
 				</center>
 				
 			</div>
