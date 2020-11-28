@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR" import="com.mie.model.*" import="com.mie.dao.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -30,24 +30,42 @@
 	<%@ include file="navbar.jsp"%>
 
 
-
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<%@ include file="sidebar_filter.jsp"%>
+			<div class="col-sm-2"></div>
 			
 			<div class="col-sm-8 text-left">
-			
-				<h1>Product</h1>
-				
-				<img src="img/Desk.jpg"> <br />
-				<br> Desk $XX <br>
-				<br> 5 stars <br>
 
+			<div class="card mb-4">
+			  <h3 class="card-header">${selectedProduct.getProductName()}</h3>
+			  <div class="card-body">
+			    <h5 class="card-title">$${selectedProduct.getProductPrice()}</h5>
+			    <a href="MyWorkspaceController?location=prodDesc&action=${wsItems.addOrDelete(selectedProduct.getProductid())}&prodid=${selectedProduct.getProductid()}&userid=admin01">${wsItems.ProductSaved(selectedProduct.getProductid())}</a>
+				</div>
+			  <img class="card-img-top" src="img/${selectedProduct.getProductImage()}">
+					  
+			  <div class="card-body">
+			    <p class="card-text">${selectedProduct.getProductDesc()}</p>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			    <li class="list-group-item">Details</li>
+			  </ul>
+			  
+			  <div class="card-body">
+			    <p class="card-text">${selectedProduct.getProductType()}</p>
+			    <p class="card-text">${selectedProduct.getProductBrand()}</p>
+			  	<p class="card-text">${selectedProduct.getProductSupplier()}</p>
+			  </div>
+			  
+			  <br>
+			  <div class="card-body">
+			    <a href="${selectedProduct.getProductLink()}" class="card-link">Get the Product</a>
+			  </div>
+			</div>
+			
 			</div>
 		</div>
 	</div>
-
-	<%@ include file="footer.jsp"%>
 
 
 </body>

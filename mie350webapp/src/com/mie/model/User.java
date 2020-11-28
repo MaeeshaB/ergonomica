@@ -7,7 +7,7 @@ public class User {
 	 * This class contains all of the relevant information, and getter/setter
 	 * methods for the Member object.
 	 */
-	private int userid;
+	private String userid;
 	private String firstName;
 	private String lastName;
 	private String username;
@@ -15,11 +15,11 @@ public class User {
 	private String email;
 	private boolean valid;
 
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
 
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 

@@ -5,7 +5,7 @@
 		<%=new java.text.SimpleDateFormat("yyyy")
 					.format(new java.util.Date())%>
 		University of Toronto <br /> Bootstrap Theme &#169; <a
-			href="http://getbootstrap.com/">Bootstrap</a><br /> JavaScript for
+			href="https://bootswatch.com/litera/">Bootstrap</a><br /> JavaScript for
 		Table Sorting &#169; <a
 			href="https://kryogenix.org/code/browser/sorttable/">Stuart
 			Langridge</a><br />

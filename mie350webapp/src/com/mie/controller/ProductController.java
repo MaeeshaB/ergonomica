@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mie.dao.ProductDao;
 
@@ -17,6 +18,7 @@ public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static String SEARCH_PRODUCT = "/searchProductResult.jsp";
+	private static String PRODUCT_DESC = "/productDescription.jsp";
 	private ProductDao dao;
 
 	/**
@@ -29,16 +31,18 @@ public class ProductController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		String forward = PRODUCT_DESC;
+		String action = request.getParameter("action");
+		int selectedProduct = Integer.parseInt(request.getParameter("prodId"));
+		HttpSession session = request.getSession(true);
+		
+		if (action.equalsIgnoreCase("select")) {
+			session.setAttribute("selectedProduct", dao.getProductById(selectedProduct));
+		} 
+
+		RequestDispatcher view = request.getRequestDispatcher(forward);
+		view.forward(request, response);
 		 
 	}
-	
-	protected void doPost(HttpServletRequest request,
-		HttpServletResponse response) throws ServletException, IOException {
-
-		//Retrieving quiz info
-		RequestDispatcher view = request.getRequestDispatcher(SEARCH_PRODUCT);
-		request.setAttribute("products", dao.getProductFromSuggestedProducts());
-		view.forward(request, response);
-	}
-
 }

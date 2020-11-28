@@ -1,38 +1,36 @@
 package com.mie.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Post {
 	
-	private int post_id;
-	private int user_id;
+	private String post_id;
 	private String post_name;
 	private String prod_desc;
 	private String post_photo;
-	private Integer post_likes;
+	private int post_likes;
 	private String post_link;
+	private List<String> postreaction_userids;
+	
+	public Post() {
+		postreaction_userids = new ArrayList<String>();
+	}
 
-	public int getPostId() {
+	public String getPostId() {
 		return post_id;
 	}
 
-	public void setPostId(int post_id) {
+	public void setPostId(String post_id) {
 		this.post_id = post_id;
-	}
-	
-	public int getPostUserId() {
-		return user_id;
-	}
-
-	public void setPostUserId(int user_id) {
-		this.user_id = user_id;
 	}
 
 	public String getPostName() {
 		return post_name;
 	}
 
-	public void getPostName(String post_name) {
+	public void setPostName(String post_name) {
 		this.post_name = post_name;
 	}
 
@@ -48,7 +46,7 @@ public class Post {
 		return prod_desc;
 	}
 
-	public void getPostDesc(String prod_desc) {
+	public void setPostDesc(String prod_desc) {
 		this.prod_desc = prod_desc;
 	}
 	
@@ -56,7 +54,7 @@ public class Post {
 		return post_photo;
 	}
 
-	public void getPostPhoto(String post_photo) {
+	public void setPostPhoto(String post_photo) {
 		this.post_photo = post_photo;
 	}
 	
@@ -64,11 +62,36 @@ public class Post {
 		return post_link;
 	}
 
-	public void getPostLink(String post_link) {
+	public void setPostLink(String post_link) {
 		this.post_link = post_link;
 	}
+	
+	public List<String> getPostReactionUserId() {
+		return postreaction_userids;
+	}
 
-
+	public void setPostReactionUserId(List<String> userids) {
+		this.postreaction_userids = userids;
+	}
+	
+	public void addPostReactionUserId(String userid) {
+		this.postreaction_userids.add(userid);
+	}
+	
+	public String ContainsUserId(String userid) {
+		if (postreaction_userids.contains(userid)) {
+			return "&#x2665;";
+		}
+		return "&#9825;";
+	}
+	
+	public String liked(String userid) {
+		if (postreaction_userids.contains(userid)) {
+			return "unlike";
+		}
+		return "like";
+	}
+	
 	@Override
 	public String toString() {
 		return "Post [post_id=" + post_id + ", post_name=" + post_name

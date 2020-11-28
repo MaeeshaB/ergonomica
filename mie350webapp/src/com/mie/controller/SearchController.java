@@ -3,15 +3,21 @@ package com.mie.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mie.dao.ProductDao;
+import com.mie.dao.WorkspaceDao;
+import com.mie.model.Product;
+import com.mie.model.Workspace;
 
 public class SearchController extends HttpServlet {
 	/**
@@ -25,6 +31,7 @@ public class SearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String SEARCH_PRODUCT = "/searchProductResult.jsp";
 	private ProductDao dao;
+	private WorkspaceDao dao_ws;
 
 	/**
 	 * Constructor for this class.
@@ -32,23 +39,25 @@ public class SearchController extends HttpServlet {
 	public SearchController() {
 		super();
 		dao = new ProductDao();
+		dao_ws = new WorkspaceDao();
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		/**
-		 * This method handles the retrieval of the search keyword entered by
-		 * the user.
-		 */
+
 		String keyword = request.getParameter("keyword");
 
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_PRODUCT);
 		request.setAttribute("keyword", keyword);
-		request.setAttribute("products", dao.getProductByKeyword(keyword));
-		/**
-		 * Redirect to the search results page after the list of students
-		 * matching the keywords has been retrieved.
-		 */
+		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("products", dao.getProductByKeyword(keyword));
+		
+		//Getting workspace data
+		Workspace workspace = dao_ws.getAllSavedItems("admin01");
+		List<Product> products = workspace.getProducts();
+		
+		session.setAttribute("wsItems", workspace);
 
 		view.forward(request, response);
 	}
