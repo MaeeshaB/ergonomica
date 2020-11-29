@@ -10,7 +10,7 @@ public class Product {
 	private int prod_id;
 	private String prod_name;
 	private String prod_desc;
-	private int prod_price;
+	private int prod_price; //need to change from int to double to display prices correctly
 	private String prod_type;
 	private String prod_category;
 	private String prod_image;
@@ -43,7 +43,7 @@ public class Product {
 		this.prod_desc = prod_desc;
 	}
 	
-	public int getProductPrice() {
+	public int getProductPrice() {  
 		return prod_price;
 	}
 
