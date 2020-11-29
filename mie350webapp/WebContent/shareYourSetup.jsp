@@ -31,12 +31,10 @@
 
 	<%@ include file="navbar.jsp"%>
 	
-
+<center>
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-3"></div>
-			
-			<div class="col-sm-8 text-left">
+			<div class="text-center">
 				<br></br> 
 				<h1>Workspace Inspiration</h1>
 				
@@ -52,16 +50,15 @@
 					</div>
 				</c:forEach>
 			
-				<br /> <br />
+				<br/> <br/>
+			
+			
 			</div>
-			
-			
-			
 			<%@ include file="footer.jsp"%>
 		</div>
 		
 	</div>
-
+</center>
 
 
 </body>
