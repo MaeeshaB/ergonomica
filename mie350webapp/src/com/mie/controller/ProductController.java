@@ -79,7 +79,6 @@ public class ProductController extends HttpServlet {
 		List<Product> products = workspace.getProducts();
 				
 		session.setAttribute("wsItems", workspace);
-
-		view.forward(request, response);
+		 
 	}
 }

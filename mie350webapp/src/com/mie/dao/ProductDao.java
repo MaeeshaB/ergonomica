@@ -20,7 +20,6 @@ public class ProductDao {
 	public ProductDao() {
 		connection = DbUtil.getConnection();
 	}
-	
 	public List<Product> getProductFromSuggestedProducts(List<String> persona, List<String> category, 
 			List<String> importance, List<String> type) {
 		List<Product> products = new ArrayList<Product>();
@@ -63,7 +62,6 @@ public class ProductDao {
 
 		return products;
 	}
-	
 	public String listToString(List<String> personas) {
 		String str = "( '" + personas.get(0);
 		for (int i=1; i < personas.size(); i++) {
@@ -72,7 +70,6 @@ public class ProductDao {
 		str +="')";
 		return str;
 	}
-	
 	public List<Product> getSortedProducts(List<Integer> prodids, String sortby, String attribute) {
 		List<Product> products = new ArrayList<Product>();
 		
@@ -142,7 +139,6 @@ public class ProductDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return product;
 		
 	}
