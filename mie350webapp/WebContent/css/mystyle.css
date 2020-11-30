@@ -12,15 +12,16 @@
 /* Set gray background color and 100% height */
 .sidenav {
 	padding-top: 20px;
-	background-color: #f1f1f1;
+	background-color: #ffffff;
 	height: 100%;
 }
 
-/* Set black background color, white text and some padding */
+/* Set black background color, white text and some padding #006f94*/
 footer {
-	background-color: #555;
+	background-color: #adb5bd;
 	color: white;
 	padding: 15px;
+	height: 115x; 
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -31,9 +32,22 @@ footer {
 	}
 	.row.content {
 		height: auto;
+		padding-bottom: 115px;
 	}
 }
 
-.ui-icon-addpost {
-	background-image: url("img/AddPostIcon.png");
+html, body, #wrapper {
+   height:100%;
+   width: 100%;
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+#wrapper td {
+   vertical-align: middle;
+   text-align: center;
+}
+
+.center {
+  text-align: center;
 }

@@ -21,60 +21,58 @@ public class PostDao {
 	 */
 	static Connection currentCon = null;
 	static ResultSet rs = null;
-	static Connection connection = null;
+	static Connection connection;
 
+	public PostDao() {
+		connection = DbUtil.getConnection();
+	}
 
-	public static Post like(int postid) {
-
-		/**
-		 * This method attempts to find the member that is trying to log in by
-		 * first retrieving the username and password entered by the user.
-		 */
-		Statement stmt = null;
-
-		/**
-		 * Prepare a query that searches the members table in the database
-		 * with the given username and password.
-		 */
-		String searchQuery = "select * from post where postid='"
-				+ postid;
-		
+	public static void like(String postid, String userid) {
 		Post post = getPostById(postid);
+		int likes = post.getPostLikes()+1;
 
 		try {
-			// connect to DB
-			currentCon = DbUtil.getConnection();
-			stmt = currentCon.createStatement();
-			rs = stmt.executeQuery(searchQuery);
-			boolean more = rs.next();
-			if (more) {
-				int likes = rs.getInt("Likes");
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("update post set post_likes="+likes+" where post_id='"+postid+"'");
 
-				post.setPostLikes(likes+1);
-			}
-		}
+			preparedStatement.executeUpdate();
 
-		catch (Exception ex) {
-			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
-		//Update database
+		//Record new post reaction
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("insert into post_reaction(post_id,user_id) values (?, ?)");
+			preparedStatement.setString(1, postid);
+			preparedStatement.setString(2, userid);
+			preparedStatement.executeUpdate();
 
-		return post;
-
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//Updating the model
+		//post.setPostLikes(likes);
+		//post.setPostReactionUserId(getPostReactionsById(postid));
 	}
-	
-	public static Post getPostById(int postid) {
+
+	public static Post getPostById(String postid) {
 		Post post = new Post();
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("select * from post where postid=?");
-			preparedStatement.setInt(1, postid);
+					.prepareStatement("select * from post where post_id='"+postid+"'");
 			ResultSet rs = preparedStatement.executeQuery();
 
 			if (rs.next()) {
-				((Post) currentCon).setPostId(rs.getInt("postid"));
-				//Add
+				post.setPostId(rs.getString("post_id"));
+				post.setPostName(rs.getString("post_name"));
+				post.setPostDesc(rs.getString("post_desc"));
+				post.setPostPhoto(rs.getString("post_photo"));
+				post.setPostLikes(rs.getInt("post_likes"));
+				post.setPostLink(rs.getString("post_link"));
+				post.setPostReactionUserId(getPostReactionsById(rs.getString("post_id")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,4 +80,78 @@ public class PostDao {
 
 		return post;
 	}
+	
+	public static List<Post> getAllPosts() {
+		List<Post> posts = new ArrayList<Post>();
+		
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from post");
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				Post post = new Post();
+				post.setPostId(rs.getString("post_id"));
+				post.setPostName(rs.getString("post_name"));
+				post.setPostDesc(rs.getString("post_desc"));
+				post.setPostPhoto(rs.getString("post_photo"));
+				post.setPostLikes(rs.getInt("post_likes"));
+				post.setPostLink(rs.getString("post_link"));
+				post.setPostReactionUserId(getPostReactionsById(rs.getString("post_id")));
+				posts.add(post);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return posts;
+	}
+	
+	public static List<String> getPostReactionsById(String postid) {
+		List<String> postreactions = new ArrayList<String>();
+		
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from Post_Reaction where post_id='"+postid+"'");
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				postreactions.add(rs.getString("user_id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return postreactions;
+	}
+
+	public void unlike(String postid, String userid) {
+		Post post = getPostById(postid);
+		int likes = post.getPostLikes()- 1;
+
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("update post set post_likes="+likes+" where post_id='"+postid+"'");
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//Record new post reaction
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("delete from post_reaction WHERE post_id = '"+postid+"' AND user_id='"+ userid +"'");
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }

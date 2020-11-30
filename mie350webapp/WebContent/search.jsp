@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -37,26 +37,35 @@
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
+				<br></br> 
 				<h1>Search</h1>
 
 				<center>
 					<form method="POST" action='SearchController' name="frmAddUser">
-						Keyword: <input type="text" name="keyword"
-							value="<c:out value="${product.searchword}" />"><input
+						Keyword <p></p>
+						<small class="text-muted">Try 'desk' or 'mouse'</small>
+						<br></br>
+						<input type="text" name="keyword"
+							value="<c:out value="${product.searchword}" />">
+							<p></p>
+							<input
 							type="submit" class="btn btn-info" value="Submit" />
 					</form>
+					<br>
+					<a class="btn btn-default" href="suggestedProducts.jsp">Take Quiz</a> 
+					<a class="btn btn-default" href="SearchController">All Products</a> 
+
 				</center>
 				
-				<a href="suggestedProducts.jsp">Take Quiz</a> 
-
 			</div>
 			<div class="col-sm-2 sidenav">
 				<!-- You can put right sidebar links here if you want to. -->
 			</div>
 		</div>
+		
+		<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 	</div>
 
-	<%@ include file="footer.jsp"%>
 
 
 </body>

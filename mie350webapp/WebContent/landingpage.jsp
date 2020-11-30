@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -23,27 +23,33 @@
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 
+<style>
+body {
+  background-image: url('img/landing.jpg');
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  background-size: cover;
+  background-attachment: fixed;
+}
+</style>
+
 </head>
 <body>
-
-
+	<center>
 	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-8 text-left">
-				<h1>Landing Page</h1>
-				
-				<a href="suggestedProducts.jsp">Continue</a> 
-			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
-		</div>
+				<br></br>
+				<br></br>
+				<br></br>
+				<h1>Confused? Ergonomica is here to help.</h1>
+				<h4>In the times of  the COVID-19 pandemic, more and more people are working or studying remotely.</h4><br></br>
+				<p class="mb-0">Ergonomica's goal is to help you set up a functional home office that is personalized to meet your needs
+				We offer tools to assist in planning your workspace through customized product suggestions based on 
+				which profile applies to you: children, students, and professionals in the office.</p>
+				<br></br>
+				<a href="suggestedProducts.jsp">
+					<button type="button" class="btn btn-info">Show Me!</button>
+				</a>
 	</div>
-
-	<%@ include file="footer.jsp"%>
-
+	</center>
 </body>
 </html>
