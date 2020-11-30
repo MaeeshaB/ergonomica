@@ -41,6 +41,18 @@ public class SearchController extends HttpServlet {
 		dao = new ProductDao();
 		dao_ws = new WorkspaceDao();
 	}
+	
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		String forward = SEARCH_PRODUCT;
+		HttpSession session = request.getSession(true);
+		
+		session.setAttribute("products", dao.getAllProducts());
+
+		RequestDispatcher view = request.getRequestDispatcher(forward);
+		view.forward(request, response);
+	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {

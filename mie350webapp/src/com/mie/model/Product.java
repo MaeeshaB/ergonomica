@@ -10,7 +10,7 @@ public class Product {
 	private int prod_id;
 	private String prod_name;
 	private String prod_desc;
-	private int prod_price; //need to change from int to double to display prices correctly
+	private double prod_price;
 	private String prod_type;
 	private String prod_category;
 	private String prod_image;
@@ -18,6 +18,7 @@ public class Product {
 	private String prod_brand;
 	private String prod_supplier;
 	private String prod_persona;
+	private String prod_importance;
 
 	public int getProductid() {
 		return prod_id;
@@ -43,11 +44,11 @@ public class Product {
 		this.prod_desc = prod_desc;
 	}
 	
-	public int getProductPrice() {  
+	public double getProductPrice() {
 		return prod_price;
 	}
 
-	public void setProductPrice(int prod_price) {
+	public void setProductPrice(double prod_price) {
 		this.prod_price = prod_price;
 	}
 	
@@ -73,6 +74,14 @@ public class Product {
 
 	public void setProductLink(String prod_link) {
 		this.prod_link = prod_link;
+	}
+	
+	public String getProductImportance() {
+		return prod_importance;
+	}
+
+	public void setProductImportance(String prod_importance) {
+		this.prod_importance = prod_importance;
 	}
 	
 	public String getProductBrand() {
@@ -114,6 +123,7 @@ public class Product {
 				+ ", prod_desc=" + prod_desc + "prod_type="+ prod_type + ", prod_price=" + prod_price 
 				+", prod_category=" + prod_category + ", prod_image=" + prod_image 
 				+ ", prod_link=" + prod_link + ", prod_brand=" + prod_brand 
-				+", prod_supplier=" + prod_supplier + ", prod_persona = " + prod_persona + "]";
+				+", prod_supplier=" + prod_supplier + ", prod_persona = " + prod_persona 
+				+ "prod_importance = " + prod_importance + "]";
 	}
 }

@@ -31,10 +31,12 @@
 
 	<%@ include file="navbar.jsp"%>
 	
-<center>
+
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="text-center">
+			<div class="col-sm-3"></div>
+			
+			<div class="col-sm-8 text-left">
 				<br></br> 
 				<h1>Workspace Inspiration</h1>
 				
@@ -48,18 +50,13 @@
 						<p class="card-text">${post.getPostDesc()}</p>
 					  </div>
 					</div>
-				</c:forEach>
-			
-				<br/> <br/>
-			
-			
+				</c:forEach>		
+				<br /> <br />
 			</div>
+
 			<%@ include file="footer.jsp"%>
 		</div>
 		
 	</div>
-</center>
-
-
 </body>
 </html>

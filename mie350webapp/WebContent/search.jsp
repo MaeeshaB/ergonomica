@@ -53,7 +53,7 @@
 					</form>
 					<br>
 					<a class="btn btn-default" href="suggestedProducts.jsp">Take Quiz</a> 
-
+					<a class="btn btn-default" href="SearchController">All Products</a> 
 				</center>
 				
 			</div>

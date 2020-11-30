@@ -72,6 +72,7 @@
 
 				<form method="POST" action="FilterController">
 				  <select name="action" class="form-control">
+				  	<option selected="">Sort By</option>
 				    <option value="Price_LH">Price: Low to High</option>
 				    <option value="Price_HL">Price: High to Low</option>
 				    <option value="Name_AZ">Name: A to Z</option>
