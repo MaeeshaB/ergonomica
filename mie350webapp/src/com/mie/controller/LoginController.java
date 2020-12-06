@@ -1,6 +1,7 @@
 package com.mie.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,13 @@ import com.mie.dao.*;
  * who succesfully log into the system.
  */
 public class LoginController extends HttpServlet {
+	
+	private UserDao dao;
+	
+	public LoginController() {
+		super();
+		dao = new UserDao();
+	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, java.io.IOException {
@@ -32,8 +40,8 @@ public class LoginController extends HttpServlet {
 			/**
 			 * Try to see if the member can log in.
 			 */
-			user = UserDao.login(user);
-
+			dao.login(user);
+			
 			/**
 			 * If the isValid value is true, assign session attributes to the
 			 * current member.
@@ -41,16 +49,16 @@ public class LoginController extends HttpServlet {
 			if (user.isValid()) {
 
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionmember", user);
+				session.setAttribute("currentSessionuser", user);
 				session.setAttribute("username", user.getUsername());
-				session.setAttribute("firstname", user.getFirstName());
-				session.setAttribute("lastname", user.getLastName());
-				/**
-				 * Redirect to the members-only home page.
-				 */
-				response.setIntHeader("Refresh", 5);
-				response.sendRedirect("myworkspace.jsp");
+				session.setAttribute("password", user.getPassword());
 				
+				session.setAttribute("loggedIn", "display:none");
+				session.setAttribute("notLoggedIn", "display:visible");
+				/**
+				 * Redirect to the user home page.
+				 */
+				response.sendRedirect("userLogged.jsp");
 
 				/**
 				 * Set a timeout variable of 900 seconds (15 minutes) for this

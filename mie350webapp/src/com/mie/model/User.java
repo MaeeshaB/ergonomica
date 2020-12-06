@@ -5,39 +5,15 @@ import java.util.Date;
 public class User {
 	/**
 	 * This class contains all of the relevant information, and getter/setter
-	 * methods for the Member object.
+	 * methods for the user object.
 	 */
-	private String userid;
-	private String firstName;
-	private String lastName;
+
 	private String username;
 	private String password;
 	private String email;
 	private boolean valid;
 
-	public String getUserid() {
-		return userid;
-	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 
 	public String getUsername() {
 		return username;
@@ -73,8 +49,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", username=" + username
+		return "User [username=" + username
 				+ ", password=" + password + ", email=" + email + "]";
 	}
 }

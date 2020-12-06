@@ -37,21 +37,22 @@ public class PostController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		//Getting post parmeters
 		String forward = SHARE_YOUR_SETUP;
 		String action = request.getParameter("action");
-		
 		String postid = request.getParameter("postid");
 		String userid = request.getParameter("userid");
 		
+		//Liking a post
 		if (action.equalsIgnoreCase("like")) {
 			dao.like(postid, userid);
-		} else if (action.equalsIgnoreCase("unlike")) {
+		} 
+		//Unliking a post
+		else if (action.equalsIgnoreCase("unlike")) {
 			dao.unlike(postid, userid);
 		}
-		else if (action.equalsIgnoreCase("getPosts")) {
-			request.setAttribute("posts", dao.getAllPosts());
-		}
 
+		//Getting all the posts
 		request.setAttribute("posts", dao.getAllPosts());
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);

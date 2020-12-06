@@ -4,6 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("username") == null) {
+		session.setAttribute("showFavBtn", "display:none");
+	} else {
+		session.setAttribute("showFavBtn", "display:block");
+	}
+%>
+
 <html lang="en">
 <head>
 <title>MIE350 Sample Web App - All Students in DB</title>
@@ -46,7 +56,9 @@
 					  <div class="card-body">
 					  <img class="card-img-top" src="img/${post.getPostPhoto()}" alt="Card image cap">
 					    <br>
-					    <a href="PostController?action=${post.liked("admin01")}&postid=<c:out value="${post.getPostId()}"/>&userid=admin01" >${post.ContainsUserId("admin01")}</a>
+					    <div id ="favouriteBtn" style="${showFavBtn}">
+					    <a href="PostController?action=${post.liked("${username}")}&postid=<c:out value="${post.getPostId()}"/>&userid=${username}" >${post.ContainsUserId("${username}")}</a>
+						</div>
 						<p class="card-text">${post.getPostDesc()}</p>
 					  </div>
 					</div>

@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR" import="com.mie.model.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
 <head>
-<title>MIE350 Sample Web App - Login</title>
+<title>Ergonomica - Log In or Sign Up</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -25,15 +27,15 @@
 </head>
 <body>
 
-	<%@ include file="navbar.jsp"%>
-
+        <%@ include file="navbar.jsp"%>
+        
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Administrator Login</h1>
+				<h1>Login</h1>
 
 				<form action="LoginController">
 
@@ -42,13 +44,19 @@
 						class="btn btn-info" value="Submit">
 
 				</form>
+				
+				<p>
+				Or <a href="createAccount.jsp">Create an account here</a>
+				<p>
+				
 				<br /> 
 				For demonstration purposes, please use the following
 				credentials:
 				<ul>
-					<li><b>Username</b>: admin (or admin2, admin3, admin4, admin5)</li>
-					<li><b>Password</b>: password</li>
+					<li><b>Username</b>: admin01 </li>
+					<li><b>Password</b>: mie350project</li>
 				</ul>
+				
 			</div>
 			<div class="col-sm-2 sidenav">
 				<!-- You can put right sidebar links here if you want to. -->

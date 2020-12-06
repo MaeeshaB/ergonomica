@@ -23,6 +23,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 
 	<style>
@@ -46,8 +47,10 @@
 
 <body>
 
-	<div class="container-fluid text-center">
+	<div class="container-fluid text-center"  margin-top="25px;">
 		<div class="row content">
+		<div class="col-sm-2 text-left">
+		</div>
 			<div class="col-sm-8 text-left">
 				<h1>WFH Goals Questionnaire</h1>
 				<h4><i>Tell us a bit about your current setup and your setup goals so our algorithm 

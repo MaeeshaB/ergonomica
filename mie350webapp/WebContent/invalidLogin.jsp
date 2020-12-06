@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR" import="com.mie.model.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
 <head>
-<title>MIE350 Sample Web App - Invalid Login!</title>
+<title>Ergonomica - Log In or Sign Up</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -37,7 +39,7 @@
 
 				<h1>Invalid Login</h1>
 
-				Please double-check your credentials and log in again.
+				Please double-check your credentials and <a href="login.jsp">log in</a> again.
 
 			</div>
 			<div class="col-sm-2 sidenav">
