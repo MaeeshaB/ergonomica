@@ -42,15 +42,15 @@
 				<table style="with: 50%">
 					<tr> 
 						<td> Username: </td>
-						<td> <input type="text" name="un" /></td> 
+						<td> <input required type="text" name="un" /></td> 
 					</tr>
 					<tr> 
 						<td> Password: </td>
-						<td> <input type="password" name="pw" /></td> 
+						<td> <input required type="password" name="pw" /></td> 
 					</tr>
 					<tr> 
 						<td> Email: </td>
-						<td> <input type="email" name="em" /></td> 
+						<td> <input required type="email" name="em" /></td> 
 					</tr>
 					</table>
 						<input name="action" type="hidden" value="createAccount"/>

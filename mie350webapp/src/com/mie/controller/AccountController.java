@@ -46,22 +46,38 @@ public class AccountController extends HttpServlet{
 			user.setUsername(request.getParameter("un"));
 			user.setPassword(request.getParameter("pw"));
 			user.setEmail(request.getParameter("em"));
+			
+			//Checking that the email and username is not currently being used
+			List<User> userList = dao.getAllUsers();
+			Boolean valid = true;
+			
+			for (User i: userList) {
+				if (i.getEmail().contentEquals(user.getEmail())) {
+					valid = false;
+					forward = "invalidCreateAccount.jsp";
+				} else if(i.getUsername().contentEquals(user.getUsername())) {
+					valid = false;
+					forward = "invalidCreateAccount.jsp";
+				}
+			}
 			/**
 			* need to update database with user information , then once updated redirect user to login page
 			 */
-			
-			try{		
-				dao.createAccount(user);
-				
-				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionuser", user);
-				session.setAttribute("username", user.getUsername());
-				session.setAttribute("password", user.getPassword());
-				forward = "userLogged.jsp";
-				
-			} catch (Throwable theException) {
-				System.out.println(theException);
+			if (valid) {
+				try{		
+					dao.createAccount(user);
+					
+					HttpSession session = request.getSession(true);
+					session.setAttribute("currentSessionuser", user);
+					session.setAttribute("username", user.getUsername());
+					session.setAttribute("password", user.getPassword());
+					forward = "userLogged.jsp";
+					
+				} catch (Throwable theException) {
+					System.out.println(theException);
+				}
 			}
+			
 		} else if (action.equalsIgnoreCase("changePassword")) {
 			try{
 				HttpSession session = request.getSession();

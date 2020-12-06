@@ -39,7 +39,7 @@
 
 				<form action="LoginController">
 
-					Username: <input type="text" name="un" /><br> Password: <input
+					Username: <input required type="text" name="un" /><br> Password: <input required
 						type="password" name="pw" /> <input type="submit"
 						class="btn btn-info" value="Submit">
 

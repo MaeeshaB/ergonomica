@@ -46,6 +46,7 @@
 </head>
 
 <body>
+	<%@ include file="navbar.jsp"%>
 
 	<div class="container-fluid text-center"  margin-top="25px;">
 		<div class="row content">
