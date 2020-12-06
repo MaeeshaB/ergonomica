@@ -2,10 +2,12 @@
 	String username = (String) session.getAttribute("username");
 	String loggedIn = "display:none";
 	String notLoggedIn = "display:visible";
-	if (username == "null") {
+	if (username == null) {
 		loggedIn = "display:visible";
 		notLoggedIn = "display:none";
 	}
+	session.setAttribute("loggedIn", loggedIn);
+	session.setAttribute("notLoggedIn", notLoggedIn);
 %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -26,16 +28,24 @@
       <li class="nav-item">
         <a class="nav-link" href="search.jsp">Search</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="MyWorkspaceController?location=ws&action=getItems&userid=admin01">My Workspace</a>
-      </li>
-      </li>
     </ul>
+    
     <ul class="nav navbar-nav navbar-right">
-		<li><a href="login.jsp" style=<%=notLoggedIn%>><span
-				class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		<li><a href="LogoutServlet" style=<%=loggedIn%>><span
-				class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		
+		<li class="nav-item" style="${notLoggedIn}">
+        <a class="nav-link" href="MyWorkspaceController?location=ws&action=getItems&userid=${username}">My Workspace</a>
+      </li>
+      
+      <li class="nav-item" style="${notLoggedIn}">
+        <a class="nav-link" href="accountSettings.jsp">Account Details</a>
+      </li>
+      
+      <li class="nav-item" style="${loggedIn}">
+		<a class="nav-link" href="login.jsp"> Login</a></li>
+		
+	
+		<li class="nav-item" style="${notLoggedIn}">
+		<a class="nav-link" href="LogoutServlet"> Logout</a>
 	</ul>
   </div>
 </nav>

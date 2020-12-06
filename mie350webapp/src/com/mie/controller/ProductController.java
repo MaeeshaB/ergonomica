@@ -40,6 +40,7 @@ public class ProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
+		//Selecting a product to view more information on
 		String forward = PRODUCT_DESC;
 		String action = request.getParameter("action");
 		int selectedProduct = Integer.parseInt(request.getParameter("prodId"));
@@ -57,28 +58,37 @@ public class ProductController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		//Finding products based on the quiz
 		String[] persona = request.getParameterValues("persona");
 		String[] category = request.getParameterValues("category");
 		String[] importance = request.getParameterValues("importance");
 		String[] type = request.getParameterValues("type");
 		
+		//Determining if the "importance" question was answered
 		List<String> important_list = new ArrayList<String>();
 		if (importance!=null) {
 			important_list = Arrays.asList(importance);
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_PRODUCT);
-		
 		HttpSession session = request.getSession(true);
 		
+		//Getting a product list from the quiz answers
 		session.setAttribute("products", dao.getProductFromSuggestedProducts(Arrays.asList(persona)
 				, Arrays.asList(category), important_list, Arrays.asList(type)));
 		
 		//Getting workspace data
-		Workspace workspace = dao_ws.getAllSavedItems("admin01");
+		String username = (String) session.getAttribute("username");
+		Workspace workspace = dao_ws.getAllSavedItems(username);
 		List<Product> products = workspace.getProducts();
 				
 		session.setAttribute("wsItems", workspace);
-		 
+		//Changing the selected value of the "sort by" dropdown menu
+		session.setAttribute("selected_LH", "");
+		session.setAttribute("selected_HL", "");
+		session.setAttribute("selected_AZ", "");
+		session.setAttribute("selected_ZA", "");
+
+		view.forward(request, response);
 	}
 }

@@ -2,6 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+
 <html lang="en">
 <head>
 <title>MIE350 Sample Web App - About</title>
@@ -89,7 +90,7 @@
 </head>
 <body>
 
-	<%@ include file="navbar.jsp"%>
+	<%@include file="navbar.jsp"%>
 
 	<div class="container-fluid text-center">
 		<div class="row content">

@@ -24,6 +24,7 @@ public class WorkspaceDao {
 	}
 	
 	
+	//Add a product to the user's workspace
 	public static void addProduct(String userid, int prodid) {
 		try {
 			PreparedStatement preparedStatement = connection
@@ -37,7 +38,7 @@ public class WorkspaceDao {
 		}
 	}
 	
-	
+	//Delete a product from the user's workspace
 	public static void deleteProduct(String userid, int prodid) {
 		
 		try {
@@ -51,9 +52,9 @@ public class WorkspaceDao {
 		}
 	}
 	
+	//Getting all items in a user's workspace
 	public static Workspace getAllSavedItems(String userid) {
 		Workspace wsItems = new Workspace();
-		//List<Product> products = new ArrayList<Product>();
 		
 		try {
 			PreparedStatement preparedStatement = connection
@@ -83,6 +84,7 @@ public class WorkspaceDao {
 	}
 
 	
+	//Getting all the product ids in a user's workspace by the product id
 	public static List<Integer> getProdIdsByUserId(String userid) {
 		List<Integer> prodids = new ArrayList<Integer>();
 		

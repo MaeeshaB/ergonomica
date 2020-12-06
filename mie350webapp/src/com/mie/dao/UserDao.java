@@ -15,7 +15,11 @@ import com.mie.util.*;
 
 public class UserDao {
 
-	static Connection currentCon = null;
+	/**
+	 * This class handles the Member objects and the login component of the web
+	 * app.
+	 */
+	
 	static ResultSet rs = null;
 	static Connection connection;
 
@@ -23,66 +27,52 @@ public class UserDao {
 		connection = DbUtil.getConnection();
 	}
 	
-	
-	public static User createAccount(User user) {
-		try {
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("insert into user(firstname,lastname,username,password,email) values (?, ?, ?, ?, ? )");
-			// Parameters start with 1
-			preparedStatement.setString(1, user.getFirstName());
-			preparedStatement.setString(2, user.getLastName());
-			preparedStatement.setString(3, user.getUsername());
-			preparedStatement.setString(4, user.getPassword());
-			preparedStatement.setString(5, user.getEmail());
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public static void createAccount(User user) {
 		
-		return user;
-	}
-	
-	//if we choose to provide a delete account option
-	public void deleteUser(int userid) {
-
 		try {
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("delete from user where userid=?");
-			// Parameters start with 1
-			preparedStatement.setInt(1, userid);
+			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user(user_id,password,email) VALUES (?,?,?)");
+			preparedStatement.setString(1, user.getUsername());
+			preparedStatement.setString(2, user.getPassword());
+			preparedStatement.setString(3, user.getEmail());
 			preparedStatement.executeUpdate();
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 
-	//if we choose to provide an update account option
-	public void updateUser(User user) {
+	public static void deleteUser(String user) {
 
+		// Parameters start with 1
+		//preparedStatement.setString(1, user);
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("delete FROM user WHERE user_id='"+user+"'");
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void updatePassword(String username, String newPassword) {
 		try {
 			//Update this statement
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("update user set firstname=?, lastname=?, username=?, password=? , email=?"
-							+ " where userid=?");
-			// Parameters start with 1
-			preparedStatement.setString(1, user.getFirstName());
-			preparedStatement.setString(2, user.getLastName());
-			preparedStatement.setString(3, user.getUsername());
-			preparedStatement.setString(4, user.getPassword());
-			preparedStatement.setString(5, user.getEmail());
+					.prepareStatement("update user set password='"+newPassword//+ ", email='"+user.getEmail()
+							+ "' where user_id='"+username+"'");
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static User login(User user) {
 
 		/**
-		 * This method attempts to find the member that is trying to log in by
+		 * This method attempts to find the user that is trying to log in by
 		 * first retrieving the username and password entered by the user.
 		 */
 		Statement stmt = null;
@@ -91,21 +81,23 @@ public class UserDao {
 		String password = user.getPassword();
 
 		/**
-		 * Prepare a query that searches the members table in the database
+		 * Prepare a query that searches the user table in the database
 		 * with the given username and password.
+		 * 
 		 */
-		String searchQuery = "select * from user where username='"
+		String searchQuery = "select * from user where user_id='"
 				+ username + "' AND password='" + password + "'";
-
+		
+		
 		try {
 			// connect to DB
-			currentCon = DbUtil.getConnection();
-			stmt = currentCon.createStatement();
+			connection = DbUtil.getConnection();
+			stmt = connection.createStatement();
 			rs = stmt.executeQuery(searchQuery);
 			boolean more = rs.next();
 
 			/**
-			 * If there are no results from the query, set the member to false.
+			 * If there are no results from the query, set the user to false.
 			 * The person attempting to log in will be redirected to the home
 			 * page when isValid is false.
 			 */
@@ -113,18 +105,7 @@ public class UserDao {
 			if (!more) {
 				user.setValid(false);
 			}
-
-			/**
-			 * If the query results in an database entry that matches the
-			 * username and password, assign the appropriate information to
-			 * the Member object.
-			 */
 			else if (more) {
-				String firstName = rs.getString("FirstName");
-				String lastName = rs.getString("LastName");
-
-				user.setFirstName(firstName);
-				user.setLastName(lastName);
 				user.setValid(true);
 			}
 		}
@@ -134,7 +115,7 @@ public class UserDao {
 					+ ex);
 		}
 		/**
-		 * Return the Member object.
+		 * Return the User object.
 		 */
 		return user;
 

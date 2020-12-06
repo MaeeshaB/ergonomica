@@ -27,21 +27,15 @@ public class PostDao {
 		connection = DbUtil.getConnection();
 	}
 
+	//Liking a post
 	public static void like(String postid, String userid) {
 		Post post = getPostById(postid);
 		int likes = post.getPostLikes()+1;
 
-		try {
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("update post set post_likes="+likes+" where post_id='"+postid+"'");
-
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		//Updating the post database to increase the number of likes
+		changePostDb(postid, likes);
 		
-		//Record new post reaction
+		//Record new post reaction associated to the user, so the user cannot like the same post more than once
 		try {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("insert into post_reaction(post_id,user_id) values (?, ?)");
@@ -52,12 +46,9 @@ public class PostDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		//Updating the model
-		//post.setPostLikes(likes);
-		//post.setPostReactionUserId(getPostReactionsById(postid));
 	}
 
+	//Getting a post by the id
 	public static Post getPostById(String postid) {
 		Post post = new Post();
 		try {
@@ -81,6 +72,7 @@ public class PostDao {
 		return post;
 	}
 	
+	//Get all the posts in the database
 	public static List<Post> getAllPosts() {
 		List<Post> posts = new ArrayList<Post>();
 		
@@ -108,6 +100,7 @@ public class PostDao {
 		return posts;
 	}
 	
+	//Getting the post reaction of the user by the id
 	public static List<String> getPostReactionsById(String postid) {
 		List<String> postreactions = new ArrayList<String>();
 		
@@ -127,21 +120,15 @@ public class PostDao {
 		return postreactions;
 	}
 
+	//Unliking a post
 	public void unlike(String postid, String userid) {
 		Post post = getPostById(postid);
 		int likes = post.getPostLikes()- 1;
 
-		try {
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("update post set post_likes="+likes+" where post_id='"+postid+"'");
-
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		//Updating the post 
+		changePostDb(postid, likes);
 		
-		//Record new post reaction
+		//Deleting the post reaction associated to the user
 		try {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("delete from post_reaction WHERE post_id = '"+postid+"' AND user_id='"+ userid +"'");
@@ -153,5 +140,19 @@ public class PostDao {
 		}
 		
 	}
+	
+	//Updating the post to reflect the number of likes
+	public static void changePostDb(String postid, int likes) {
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("update post set post_likes="+likes+" where post_id='"+postid+"'");
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }

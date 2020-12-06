@@ -38,12 +38,14 @@ public class MyWorkspaceController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		//Getting the submitted parameters
 		String forward = "";
 		String action = request.getParameter("action");
 		String userid = request.getParameter("userid");
 		String prodId = request.getParameter("prodid");
 		String location = request.getParameter("location");
 		
+		//Determining the page to go to next
 		if (location.equalsIgnoreCase("search")) {
 			forward = SEARCH_PRODUCT;
 		} else if (location.equalsIgnoreCase("ws")){
@@ -52,13 +54,16 @@ public class MyWorkspaceController extends HttpServlet {
 			forward = PRODUCT_DESC;
 		}
 
+		//Saving a product to the workspace
 		if (action.equalsIgnoreCase("save")) {
 			dao.addProduct(userid, Integer.parseInt(prodId));
-		} else if (action.equalsIgnoreCase("delete")) {
+		} 
+		//Deleting a product form the workspace
+		else if (action.equalsIgnoreCase("delete")) {
 			dao.deleteProduct(userid, Integer.parseInt(prodId));
 		}
 		
-
+		//Getting all the user's saved products and setting it to "wsItems"
 		Workspace workspace = dao.getAllSavedItems(userid);
 		List<Product> products = workspace.getProducts();
 		

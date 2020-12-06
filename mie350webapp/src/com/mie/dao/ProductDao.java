@@ -20,48 +20,27 @@ public class ProductDao {
 	public ProductDao() {
 		connection = DbUtil.getConnection();
 	}
+	//Getting a list of products based on the user's quiz answers
 	public List<Product> getProductFromSuggestedProducts(List<String> persona, List<String> category, 
 			List<String> importance, List<String> type) {
 		List<Product> products = new ArrayList<Product>();
 		
+		//If the user did not answer the importance question, do not include it in the select query
 		String prod_importance = "";
-
 		if (importance.isEmpty()==false) {
 			prod_importance = " AND E.prod_importance IN " + listToString(importance);
 		}
 		
-		try {
-			String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
-					+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
-					+" WHERE P.prod_persona IN "+ listToString(persona) +" AND P.prod_category IN "
-					+ listToString(category)+prod_importance
-					+ " AND (I.prod_type IN "+listToString(type)+" OR E.prod_type IN "+listToString(type)+")";
-			
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(str);
-			
-			while (rs.next()) {
-				Product product = new Product();
-				product.setProductid(rs.getInt("prod_id"));
-				product.setProductName(rs.getString("prod_name"));
-				product.setProductDesc(rs.getString("prod_desc"));
-				product.setProductType(rs.getString("prod_type"));
-				product.setProductPrice(rs.getDouble("prod_price"));
-				product.setProductImportance(rs.getString("prod_importance"));
-				product.setProductCategory(rs.getString("prod_category"));
-				product.setProductImage(rs.getString("prod_image"));
-				product.setProductLink(rs.getString("prod_link"));
-				product.setProductPersona(rs.getString("prod_persona"));
-				product.setProductBrand(rs.getString("prod_brand"));
-				product.setProductSupplier(rs.getString("prod_supplier"));
-				products.add(product);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
+				+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
+				+" WHERE P.prod_persona IN "+ listToString(persona) +" AND P.prod_category IN "
+				+ listToString(category)+prod_importance
+				+ " AND (I.prod_type IN "+listToString(type)+" OR E.prod_type IN "+listToString(type)+")";
 
+		products = getProductsFromDB(str);
 		return products;
 	}
+	//Converting a list of strings to a string that can be used by the sql select query
 	public String listToString(List<String> personas) {
 		String str = "( '" + personas.get(0);
 		for (int i=1; i < personas.size(); i++) {
@@ -70,39 +49,21 @@ public class ProductDao {
 		str +="')";
 		return str;
 	}
+	//Getting products from the database in a specific order
 	public List<Product> getSortedProducts(List<Integer> prodids, String sortby, String attribute) {
 		List<Product> products = new ArrayList<Product>();
 		
-		try {
-			String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
-					+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id) WHERE prod_id IN "
-							+ prodIdsToString(prodids) + " ORDER BY " + attribute + " " + sortby;
-			
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(str);
-			while (rs.next()) {
-				Product product = new Product();
-				product.setProductid(rs.getInt("prod_id"));
-				product.setProductName(rs.getString("prod_name"));
-				product.setProductDesc(rs.getString("prod_desc"));
-				product.setProductType(rs.getString("prod_type"));
-				product.setProductPrice(rs.getDouble("prod_price"));
-				product.setProductCategory(rs.getString("prod_category"));
-				product.setProductImportance(rs.getString("prod_importance"));
-				product.setProductImage(rs.getString("prod_image"));
-				product.setProductLink(rs.getString("prod_link"));
-				product.setProductLink(rs.getString("prod_persona"));
-				product.setProductBrand(rs.getString("prod_brand"));
-				product.setProductSupplier(rs.getString("prod_supplier"));
-				products.add(product);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
+				+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id) WHERE prod_id IN "
+						+ prodIdsToString(prodids) + " ORDER BY " + attribute + " " + sortby;
+		
+		products = getProductsFromDB(str);
+		
 
 		return products;
 	}
 	
+	//Converting a list of product ids to a string that can be used by the sql select query
 	public String prodIdsToString(List<Integer> prodids) {
 		String str = "(" + prodids.get(0);
 		for (int i=1; i < prodids.size(); i++) {
@@ -112,106 +73,46 @@ public class ProductDao {
 		return str;
 	}
 
+	//Getting a product from its id
 	public Product getProductById(int prodid) {
 		
-		Product product = new Product();
+		List<Product> products = new ArrayList<Product>();
+		String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
+				+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
+				+" WHERE P.prod_id = "+prodid;
 		
-		try {
-			String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
-					+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
-					+" WHERE P.prod_id = "+prodid;
-			
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(str);
-			while (rs.next()) {
-				product.setProductid(rs.getInt("prod_id"));
-				product.setProductName(rs.getString("prod_name"));
-				product.setProductDesc(rs.getString("prod_desc"));
-				product.setProductPrice(rs.getDouble("prod_price"));
-				product.setProductImportance(rs.getString("prod_importance"));
-				product.setProductCategory(rs.getString("prod_category"));
-				product.setProductImage(rs.getString("prod_image"));
-				product.setProductLink(rs.getString("prod_link"));
-				product.setProductPersona(rs.getString("prod_persona"));
-				product.setProductBrand(rs.getString("prod_brand"));
-				product.setProductSupplier(rs.getString("prod_supplier"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return product;
-		
+		products = getProductsFromDB(str);
+
+		return products.get(0);	
 	}
 	
-	
+	//Getting a list of product of a certian type
 	public List<Product> getProductByType(String type) {
 		List<Product> products = new ArrayList<Product>();
 		
-		try {
-			String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
-					+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
-					+" WHERE I.prod_type = '"+type+"' OR E.prod_type = '"+type+"'";
-			
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(str);
-			
-			while (rs.next()) {
-				Product product = new Product();
-				product.setProductid(rs.getInt("prod_id"));
-				product.setProductName(rs.getString("prod_name"));
-				product.setProductDesc(rs.getString("prod_desc"));
-				product.setProductType(rs.getString("prod_type"));
-				product.setProductPrice(rs.getDouble("prod_price"));
-				product.setProductImportance(rs.getString("prod_importance"));
-				product.setProductCategory(rs.getString("prod_category"));
-				product.setProductImage(rs.getString("prod_image"));
-				product.setProductLink(rs.getString("prod_link"));
-				product.setProductPersona(rs.getString("prod_persona"));
-				product.setProductBrand(rs.getString("prod_brand"));
-				product.setProductSupplier(rs.getString("prod_supplier"));
-				products.add(product);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
+				+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
+				+" WHERE I.prod_type = '"+type+"' OR E.prod_type = '"+type+"'";
+		
+		products = getProductsFromDB(str);
 
 		return products;
 	}
 
 
+	//Getting a list of products from a keyword - used for the search feature
 	public List<Product> getProductByKeyword(String keyword) {
 		List<Product> products = new ArrayList<Product>();
 		
+		//Products are retireved if the keywork is similar to the product name, description, type, brand, supplier, or persona
+		String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
+				+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
+				+ " where P.prod_name LIKE '"+keyword+"' OR P.prod_desc LIKE '"+keyword
+				+"' OR I.prod_type LIKE '"+keyword+"' OR E.prod_type LIKE '"+keyword+"'"
+				+" OR I.prod_brand LIKE '"+keyword+"' OR E.prod_supplier LIKE '"+keyword+"'"
+				+ " OR P.prod_persona LIKE '"+ keyword+"'";
 		
-		try {
-			String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
-					+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
-					+ " where P.prod_name LIKE '"+keyword+"' OR P.prod_desc LIKE '"+keyword
-					+"' OR I.prod_type LIKE '"+keyword+"' OR E.prod_type LIKE '"+keyword+"'"
-					+" OR I.prod_brand LIKE '"+keyword+"' OR E.prod_supplier LIKE '"+keyword+"'"
-					+ " OR P.prod_persona LIKE '"+ keyword+"'";
-			
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(str);
-			while (rs.next()) {
-				Product product = new Product();
-				product.setProductid(rs.getInt("prod_id"));
-				product.setProductName(rs.getString("prod_name"));
-				product.setProductDesc(rs.getString("prod_desc"));
-				product.setProductType(rs.getString("prod_type"));
-				product.setProductPrice(rs.getDouble("prod_price"));
-				product.setProductImportance(rs.getString("prod_importance"));
-				product.setProductCategory(rs.getString("prod_category"));
-				product.setProductImage(rs.getString("prod_image"));
-				product.setProductLink(rs.getString("prod_link"));
-				product.setProductPersona(rs.getString("prod_persona"));
-				product.setProductBrand(rs.getString("prod_brand"));
-				product.setProductSupplier(rs.getString("prod_supplier"));
-				products.add(product);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		products = getProductsFromDB(str);
 
 		return products;
 	}
@@ -219,32 +120,10 @@ public class ProductDao {
 	public List<Product> getAllProducts() {
 		List<Product> products = new ArrayList<Product>();
 		
+		String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
+				+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)";
 		
-		try {
-			String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
-					+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)";
-			
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(str);
-			while (rs.next()) {
-				Product product = new Product();
-				product.setProductid(rs.getInt("prod_id"));
-				product.setProductName(rs.getString("prod_name"));
-				product.setProductDesc(rs.getString("prod_desc"));
-				product.setProductType(rs.getString("prod_type"));
-				product.setProductPrice(rs.getDouble("prod_price"));
-				product.setProductImportance(rs.getString("prod_importance"));
-				product.setProductCategory(rs.getString("prod_category"));
-				product.setProductImage(rs.getString("prod_image"));
-				product.setProductLink(rs.getString("prod_link"));
-				product.setProductPersona(rs.getString("prod_persona"));
-				product.setProductBrand(rs.getString("prod_brand"));
-				product.setProductSupplier(rs.getString("prod_supplier"));
-				products.add(product);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		products = getProductsFromDB(str);
 
 		return products;
 	}
@@ -255,5 +134,35 @@ public class ProductDao {
 			prodids.add(products.get(i).getProductid());
 		}
 		return prodids;
+	}
+	
+	//Running sql query to get products form the database
+	public List<Product> getProductsFromDB(String str) {
+		List<Product> products = new ArrayList<Product>();
+		
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(str);
+			while (rs.next()) {
+				Product product = new Product();
+				product.setProductid(rs.getInt("prod_id"));
+				product.setProductName(rs.getString("prod_name"));
+				product.setProductDesc(rs.getString("prod_desc"));
+				product.setProductType(rs.getString("prod_type"));
+				product.setProductPrice(rs.getDouble("prod_price"));
+				product.setProductImportance(rs.getString("prod_importance"));
+				product.setProductCategory(rs.getString("prod_category"));
+				product.setProductImage(rs.getString("prod_image"));
+				product.setProductLink(rs.getString("prod_link"));
+				product.setProductPersona(rs.getString("prod_persona"));
+				product.setProductBrand(rs.getString("prod_brand"));
+				product.setProductSupplier(rs.getString("prod_supplier"));
+				products.add(product);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return products;
 	}
 }
