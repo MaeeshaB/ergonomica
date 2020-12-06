@@ -30,8 +30,13 @@ public class LogoutServlet extends HttpServlet {
 		 */
 		HttpSession session = request.getSession(false);
 		session.invalidate();
+<<<<<<< HEAD
 		// session.setAttribute("loggedIn", "display:visible");
 		// session.setAttribute("notLoggedIn", "display:none");
+=======
+		session.setAttribute("loggedIn", "display:visible");
+		session.setAttribute("notLoggedIn", "display:none");
+>>>>>>> f835d4cd4e4e61e5a0f7203ef9ebdda26e4fbd36
 
 		/**
 		 * Print out a message indicating the user has been logged out.

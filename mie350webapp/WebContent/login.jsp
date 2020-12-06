@@ -54,7 +54,11 @@
 				credentials:
 				<ul>
 					<li><b>Username</b>: admin01 </li>
+<<<<<<< HEAD
 					<li><b>Password</b>: hello </li>
+=======
+					<li><b>Password</b>: mie350project</li>
+>>>>>>> f835d4cd4e4e61e5a0f7203ef9ebdda26e4fbd36
 				</ul>
 				
 			</div>
