@@ -46,8 +46,8 @@
 </head>
 
 <body>
-
-	<div class="container-fluid text-center"  margin-top="25px;">
+	<%@ include file="navbar.jsp"%>
+	<div class="container-fluid text-center">
 		<div class="row content">
 		<div class="col-sm-2 text-left">
 		</div>
@@ -261,7 +261,6 @@
 				</form>
 
 				<a class="btn btn-default" href="search.jsp">Skip</a>
-				
 			</div>
 		</div>
 	</div>

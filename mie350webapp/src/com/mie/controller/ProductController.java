@@ -83,7 +83,6 @@ public class ProductController extends HttpServlet {
 		List<Product> products = workspace.getProducts();
 				
 		session.setAttribute("wsItems", workspace);
-		
 		//Changing the selected value of the "sort by" dropdown menu
 		session.setAttribute("selected_LH", "");
 		session.setAttribute("selected_HL", "");

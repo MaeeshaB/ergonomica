@@ -42,9 +42,11 @@ body {
 				<br></br>
 				<h1>Confused? Ergonomica is here to help.</h1>
 				<h4>In the times of  the COVID-19 pandemic, more and more people are working or studying remotely.</h4><br></br>
-				<p class="mb-0">Ergonomica's goal is to help you set up a functional home office that is personalized to meet your needs
-				We offer tools to assist in planning your workspace through customized product suggestions based on 
-				which profile applies to you: children, students, and professionals in the office.</p>
+  				<blockquote class="blockquote">	
+					<p class="mb-0">Ergonomica¡¯s goal is to help you set up a functional home office that is personalized to meet your needs
+					We offer tools to assist in planning your workspace through customized product suggestions based on 
+					which profile applies to you: children, students, and professionals in the office.</p>
+				</blockquote>
 				<br></br>
 				<a href="suggestedProducts.jsp">
 					<button type="button" class="btn btn-info">Show Me!</button>
