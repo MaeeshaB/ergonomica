@@ -73,6 +73,19 @@
 		<servlet-name>LoginController</servlet-name>
 		<url-pattern>/LoginController</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>AccountController</display-name>
+		<servlet-name>AccountController</servlet-name>
+		<servlet-class>com.mie.controller.AccountController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AccountController</servlet-name>
+		<url-pattern>/AccountController</url-pattern>
+	</servlet-mapping>
+	
+	
 	<servlet>
 		<description></description>
 		<display-name>LogoutServlet</display-name>

@@ -49,6 +49,12 @@ public class SearchController extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		session.setAttribute("products", dao.getAllProducts());
+		
+		//Changing the selected value of the "sort by" dropdown menu
+		session.setAttribute("selected_LH", "");
+		session.setAttribute("selected_HL", "");
+		session.setAttribute("selected_AZ", "");
+		session.setAttribute("selected_ZA", "");
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
@@ -57,11 +63,12 @@ public class SearchController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		//Getting the key search word
 		String keyword = request.getParameter("keyword");
-
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_PRODUCT);
 		request.setAttribute("keyword", keyword);
 		
+		//Getting products based on the key search word
 		HttpSession session = request.getSession(true);
 		session.setAttribute("products", dao.getProductByKeyword(keyword));
 		
@@ -70,6 +77,12 @@ public class SearchController extends HttpServlet {
 		List<Product> products = workspace.getProducts();
 		
 		session.setAttribute("wsItems", workspace);
+		
+		//Changing the selected value of the "sort by" dropdown menu
+		session.setAttribute("selected_LH", "");
+		session.setAttribute("selected_HL", "");
+		session.setAttribute("selected_AZ", "");
+		session.setAttribute("selected_ZA", "");
 
 		view.forward(request, response);
 	}

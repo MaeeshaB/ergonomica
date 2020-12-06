@@ -48,19 +48,38 @@
 			    <p class="card-text">${selectedProduct.getProductDesc()}</p>
 			  </div>
 			  <ul class="list-group list-group-flush">
-			    <li class="list-group-item">Details</li>
+			    <li class="list-group-item">
+			    <p class="card-text">Details
+			    <br>
+			     <br>
+			     Brand
+			     <br>
+			     ${selectedProduct.getProductBrand()}
+			     ${selectedProduct.getProductSupplier()}
+			     <br><br>
+			     Persona:
+			     <br>
+			     ${selectedProduct.getProductPersona()}
+			     <br><br>
+			     Product Type:
+			     <br>
+			     ${selectedProduct.getProductPersona()}
+			     <br>
+			     ${selectedProduct.getProductType()}
+			     <br><br>
+			     Specialty:
+			     <br>
+			     ${selectedProduct.getProductCategory()}
+			     <br>
+			     ${selectedProduct.getProductType()}
+			     <br><br>
+			     Get the Product:
+			     <br>
+			     ${selectedProduct.getProductLink()}
+			      </p>
+			    </li>
 			  </ul>
 			  
-			  <div class="card-body">
-			    <p class="card-text">${selectedProduct.getProductType()}</p>
-			    <p class="card-text">${selectedProduct.getProductBrand()}</p>
-			  	<p class="card-text">${selectedProduct.getProductSupplier()}</p>
-			  </div>
-			  
-			  <br>
-			  <div class="card-body">
-			    <a href="${selectedProduct.getProductLink()}" class="card-link">Get the Product</a>
-			  </div>
 			</div>
 			
 			</div>

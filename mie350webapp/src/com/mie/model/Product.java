@@ -109,7 +109,7 @@ public class Product {
 	}
 	
 	public String getProductPersona() {
-		return prod_type;
+		return prod_persona;
 	}
 
 	public void setProductPersona(String prod_persona) {

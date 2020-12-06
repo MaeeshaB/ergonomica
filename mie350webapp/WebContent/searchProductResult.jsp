@@ -4,6 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("username") == null) {
+		session.setAttribute("showFavBtn", "display:none");
+	} else {
+		session.setAttribute("showFavBtn", "display:block");
+	}
+%>
+
 <html lang="en">
 <head>
 <title>MIE350 Sample Web App - Search Results</title>
@@ -22,6 +32,8 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript" src="js/pagination.js"></script>  
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
@@ -69,23 +81,26 @@
 				 </div>
 				
 				<br> <br>
-
+				
 				<form method="POST" action="FilterController">
-				  <select name="action" class="form-control">
-				  	<option selected="">Sort By</option>
-				    <option value="Price_LH">Price: Low to High</option>
-				    <option value="Price_HL">Price: High to Low</option>
-				    <option value="Name_AZ">Name: A to Z</option>
-				    <option value="Name_ZA">Name: Z to A</option>
+				  <select id = "sort" name="action" class="form-control" onchange="this.form.submit()">
+				  	<option selected>Sort By</option>
+				    <option ${selected_LH} value="Price_LH">Price: Low to High</option>
+				    <option ${selected_HL} value="Price_HL">Price: High to Low</option>
+				    <option ${selected_AZ} value="Name_AZ">Name: A to Z</option>
+				    <option ${selected_ZA} value="Name_ZA">Name: Z to A</option>
 				  </select>
-				  <input class="btn btn-default" type="submit" value="Submit">
+				  
 				</form>
 				
 				<br> <br>
 				
 				<center>
 				
-				<table class="table">
+			
+				
+				<table class="table" id="myTable">
+					<tbody id="myTableBody">
 					<c:forEach begin="0" end="${products.size()}" step="3" var="i">
 							<tr>
 			                <c:forEach begin="${i}" end="${i+2}" var="j">
@@ -95,7 +110,9 @@
 									<br>
 										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${products.get(j).getProductid()}"/>">${products.get(j).getProductName()}</a>
 										<br>
-										<a href="MyWorkspaceController?location=search&action=${wsItems.addOrDelete(products.get(j).getProductid())}&prodid=${products.get(j).getProductid()}&userid=admin01">${wsItems.ProductSaved(products.get(j).getProductid())}</a>
+										<div id ="favouriteBtn" style="${showFavBtn}">
+										<a href="MyWorkspaceController?location=search&action=${wsItems.addOrDelete(products.get(j).getProductid())}&prodid=${products.get(j).getProductid()}&userid=${username}">${wsItems.ProductSaved(products.get(j).getProductid())}</a>
+										</div>
 									$ <c:out value="${products.get(j).getProductPrice()}" />
 										<br>
 								</c:if>
@@ -103,11 +120,19 @@
 			             	</c:forEach>
 			            </tr>
 			        </c:forEach>
+			        </tbody>
 		        </table>
-				
+				<div class="col-md-12 text-center">
+		      <ul class="pagination pagination-sm" id="myPager"></ul>
+		      </div>
+		      
 				</center>
 				
 			</div>
+			
+			<div class="col-sm-2 sidenav">
+			</div>
+			
 			<%@ include file="footer.jsp"%>
 			
 			
