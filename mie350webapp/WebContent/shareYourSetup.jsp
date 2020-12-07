@@ -44,15 +44,15 @@
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-3"></div>
 			
-			<div class="col-sm-8 text-left">
+			<div class="col-sm">
 				<br></br> 
 				<h1>Workspace Inspiration</h1>
 				
 				<c:forEach items="${posts}" var="post">
-					<div class="card border-secondary mb-4 text-center" style="max-width: 28rem;">
-					  <div class="card-header">${post.getPostName()}</div>
+					<div class="card border-secondary mb-4 text-center align-center" style="max-width: 28rem;">
+					 <!-- <div class="card-header">${post.getPostName()}</div> -->
+					  <a class="card-header" target="_blank" href="${post.getPostLink()}">${post.getPostName()}</a>
 					  <div class="card-body">
 					  <img class="card-img-top" src="img/${post.getPostPhoto()}" alt="Card image cap">
 					    <br>
