@@ -62,19 +62,13 @@
 						<p class="card-text">${post.getPostDesc()}</p>
 					  </div>
 					</div>
-				</c:forEach>
-			
+				</c:forEach>		
 				<br /> <br />
 			</div>
-			
-			
-			
+
 			<%@ include file="footer.jsp"%>
 		</div>
 		
 	</div>
-
-
-
 </body>
 </html>

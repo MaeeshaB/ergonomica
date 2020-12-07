@@ -20,7 +20,6 @@ public class ProductDao {
 	public ProductDao() {
 		connection = DbUtil.getConnection();
 	}
-	
 	//Getting a list of products based on the user's quiz answers
 	public List<Product> getProductFromSuggestedProducts(List<String> persona, List<String> category, 
 			List<String> importance, List<String> type) {
@@ -41,8 +40,6 @@ public class ProductDao {
 		products = getProductsFromDB(str);
 		return products;
 	}
-	
-	
 	//Converting a list of strings to a string that can be used by the sql select query
 	public String listToString(List<String> personas) {
 		String str = "( '" + personas.get(0);
@@ -52,7 +49,6 @@ public class ProductDao {
 		str +="')";
 		return str;
 	}
-	
 	//Getting products from the database in a specific order
 	public List<Product> getSortedProducts(List<Integer> prodids, String sortby, String attribute) {
 		List<Product> products = new ArrayList<Product>();
@@ -81,15 +77,13 @@ public class ProductDao {
 	public Product getProductById(int prodid) {
 		
 		List<Product> products = new ArrayList<Product>();
-		
 		String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
 				+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
 				+" WHERE P.prod_id = "+prodid;
 		
 		products = getProductsFromDB(str);
 
-		return products.get(0);
-		
+		return products.get(0);	
 	}
 	
 	//Getting a list of product of a certian type
