@@ -11,6 +11,13 @@
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%
+	String loggedIn = "display:visible";
+	String notLoggedIn = "display:none";
+	session.setAttribute("loggedIn", loggedIn);
+	session.setAttribute("notLoggedIn", notLoggedIn);
+%>
+
 <html lang="en">
 <head>
 <title>MIE350 Sample Web App - About</title>

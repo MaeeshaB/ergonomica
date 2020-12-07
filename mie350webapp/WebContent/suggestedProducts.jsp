@@ -47,7 +47,7 @@
 
 <body>
 	<%@ include file="navbar.jsp"%>
-	<div class="container-fluid text-center">
+	<div class="container-fluid text-center"  margin-top="25px;">
 		<div class="row content">
 		<div class="col-sm-2 text-left">
 		</div>

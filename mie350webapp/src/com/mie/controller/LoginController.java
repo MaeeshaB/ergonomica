@@ -1,6 +1,7 @@
 package com.mie.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,8 +41,9 @@ public class LoginController extends HttpServlet {
 			/**
 			 * Try to see if the member can log in.
 			 */
-			dao.login(user);
 			
+			dao.login(user);
+						
 			/**
 			 * If the isValid value is true, assign session attributes to the
 			 * current member.

@@ -27,6 +27,30 @@ public class UserDao {
 		connection = DbUtil.getConnection();
 	}
 	
+	//Get all the posts in the database
+	public static List<User> getAllUsers() {
+		List<User> users = new ArrayList<User>();
+		
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from user");
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				User user = new User();
+				user.setUsername(rs.getString("user_id"));
+				user.setPassword(rs.getString("password"));
+				user.setEmail(rs.getString("email"));
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return users;
+	}
+	
 	public static void createAccount(User user) {
 		
 		try {
