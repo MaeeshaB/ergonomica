@@ -71,7 +71,6 @@
 			</center>
 	</div>
 
-	<%@ include file="footer.jsp"%>
 
 <script>
 function confirmDelete() {

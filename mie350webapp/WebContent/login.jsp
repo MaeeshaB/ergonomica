@@ -46,7 +46,7 @@
 	<div class="container-fluid text-center ">
 	<center>
 				<br></br>
-				<h1>Login</h1>
+				<h1>Register</h1>
 					
 				<div class="btn-group btn-group-toggle button-margins" data-toggle="buttons">
 				  <label class="btn btn-primary active" onclick="loginPage()" style="width:160px;">

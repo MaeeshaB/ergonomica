@@ -62,7 +62,6 @@
 			</div>
 		</div>
 		
-		<div class="fixed-bottom"><%@ include file="footer.jsp"%></div>
 	</div>
 
 
