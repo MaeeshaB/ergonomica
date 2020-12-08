@@ -48,11 +48,7 @@
 						<td> Password: </td>
 						<td> <input required type="password" name="pw" /></td> 
 					</tr>
-<<<<<<< HEAD
-					<tr>
-=======
 					<tr> 
->>>>>>> f835d4cd4e4e61e5a0f7203ef9ebdda26e4fbd36
 						<td> Email: </td>
 						<td> <input required type="email" name="em" /></td> 
 					</tr>

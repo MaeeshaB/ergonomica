@@ -37,9 +37,10 @@
 			</div>
 			<div class="col-sm-8 text-left">
 				<br></br> 
+				<center>
 				<h1>Search</h1>
 
-				<center>
+				
 					<form method="POST" action='SearchController' name="frmAddUser">
 						Keyword <p></p>
 						<small class="text-muted">Try 'desk' or 'mouse'</small>

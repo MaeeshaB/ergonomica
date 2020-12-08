@@ -24,47 +24,87 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+<style>
+.inner
+{
+    display: inline-block;
+}
+
+.button-margins{
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+</style>
+
 </head>
 <body>
 
         <%@ include file="navbar.jsp"%>
         
-	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-8 text-left">
+	<div class="container-fluid text-center ">
+	<center>
+				<br></br>
 				<h1>Login</h1>
-
+					
+				<div class="btn-group btn-group-toggle button-margins" data-toggle="buttons">
+				  <label class="btn btn-primary active" onclick="loginPage()" style="width:160px;">
+				    <input type="radio" name="options" id="option1" autocomplete="off" checked=""> Login
+				  </label>
+				  <label class="btn btn-primary" onclick="registerPage()" style="width:160px;">
+				    <input type="radio" name="options" id="option2" autocomplete="off" > Register
+				  </label>
+				</div>
+				
+			<div id="loginForm" class="card border-primary mb-3 text-center" style="max-width: 20rem;">
+				  <div class="card-header">Enter your Credentials Here</div>
+				  <div class="card-body">
 				<form action="LoginController">
 
-					Username: <input required type="text" name="un" /><br> Password: <input required
+					Username <input required type="text" name="un" /><br> Password <input required
 						type="password" name="pw" /> <input type="submit"
-						class="btn btn-info" value="Submit">
-
-				</form>
-				
-				<p>
-				Or <a href="createAccount.jsp">Create an account here</a>
-				<p>
-				
-				<br /> 
-				For demonstration purposes, please use the following
-				credentials:
-				<ul>
-					<li><b>Username</b>: admin01 </li>
-					<li><b>Password</b>: hello </li>
-				</ul>
-				
+						class="btn btn-info button-margins" value="Submit">
+				</form>	    
+				 </div>
 			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
-		</div>
+			
+			<div id="registerForm" class="card border-info mb-3 text-center" style="max-width: 20rem; display:none">
+				  <div class="card-header">Sign up for Ergonomica Here!</div>
+				  <div class="card-body">
+					<form action="AccountController" method="post">
+					
+						      Username <input required type="text" name="un" />
+						      <br>
+						      Password <input required type="password" name="pw" /><br>
+							  Email <br><input required type="email" name="em" />
+								<input name="action" type="hidden" value="createAccount"/>
+								<input type="submit" class="btn btn-info button-margins" value="Submit"/>
+					</form>
+				  </div>			    
+			</div>			
+			
 	</div>
 
-	<%@ include file="footer.jsp"%>
+	</center>
+
+<script>
+function loginPage(){
+	  var x = document.getElementById("loginForm");
+	  var y = document.getElementById("registerForm");
+	  x.style.display = "block";
+	  y.style.display = "none";
+	}
+	
+function registerPage(){
+	var x = document.getElementById("loginForm");
+	var y = document.getElementById("registerForm");
+	x.style.display = "none";
+    y.style.display = "block";	  
+}
+
+</script>
 
 </body>
 </html>
+

@@ -32,13 +32,13 @@
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-10 text-left">
-				<br></br> 
-				<h1>My Workspace</h1>
+		
 				
+			<center>	
+			<div class="col-sm-8">
+			<br></br> 
+				<h1>
+				<%=username%>'s Workspace</h1>
 				<table class="table">
 					<c:forEach begin="0" end="${wsItems.getProducts().size()}" step="3" var="i">
 							<tr>
@@ -50,18 +50,19 @@
 										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${wsItems.getProducts().get(j).getProductid()}"/>">${wsItems.getProducts().get(j).getProductName()}</a>
 										<br>
 										<a href="MyWorkspaceController?location=ws&action=${wsItems.addOrDelete(wsItems.getProducts().get(j).getProductid())}&prodid=${wsItems.getProducts().get(j).getProductid()}&userid=admin01">${wsItems.ProductSaved(wsItems.getProducts().get(j).getProductid())}</a>
-									$ <c:out value="${wsItems.getProducts().get(j).getProductPrice()}" />
+									$ <c:out value="${wsItems.getProducts().get(j).getProductPriceString()}" />
 										<br>
 								</c:if>
 				                </td>
 			             	</c:forEach>
 			            </tr>
 			        </c:forEach>
-		        </table>	
-		        
-		       	
+		        </table>
+		        </div>
+		     </center>   
+		     
+		     	
 					<%@ include file="footer.jsp"%>
-			</div>
 		</div>
 		
 	</div>

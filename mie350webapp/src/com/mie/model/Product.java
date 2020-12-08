@@ -1,5 +1,7 @@
 package com.mie.model;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Date;
 
 public class Product {
@@ -19,6 +21,7 @@ public class Product {
 	private String prod_supplier;
 	private String prod_persona;
 	private String prod_importance;
+	private static DecimalFormat df = new DecimalFormat("0.00");
 
 	public int getProductid() {
 		return prod_id;
@@ -42,6 +45,11 @@ public class Product {
 
 	public void setProductDesc(String prod_desc) {
 		this.prod_desc = prod_desc;
+	}
+	
+	public String getProductPriceString() {
+		return df.format(prod_price);
+		// return prod_price;
 	}
 	
 	public double getProductPrice() {

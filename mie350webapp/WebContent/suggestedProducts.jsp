@@ -52,6 +52,7 @@
 		<div class="col-sm-2 text-left">
 		</div>
 			<div class="col-sm-8 text-left">
+			<br> <br>
 				<h1>WFH Goals Questionnaire</h1>
 				<h4><i>Tell us a bit about your current setup and your setup goals so our algorithm 
 						can tailor the product suggestions to fit your needs :)</i></h4> <br>
@@ -62,6 +63,7 @@
 						<script type="text/javascript">
 						
 						//Make sure all the checkboxes are filled
+						
 						$(document).ready(function () {
 						    $('#checkBtn').click(function() {
 						      checked = $("input[type=checkbox][name=persona]:checked").length;

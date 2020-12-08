@@ -24,6 +24,14 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+<style>
+.prod-img {
+	object-fit: contain;
+	max-height: 250px;
+}
+
+</style>
 </head>
 <body>
 
@@ -42,28 +50,26 @@
 			    <h5 class="card-title">$${selectedProduct.getProductPrice()}</h5>
 			    <a href="MyWorkspaceController?location=prodDesc&action=${wsItems.addOrDelete(selectedProduct.getProductid())}&prodid=${selectedProduct.getProductid()}&userid=admin01">${wsItems.ProductSaved(selectedProduct.getProductid())}</a>
 				</div>
-			  <img class="card-img-top" src="img/${selectedProduct.getProductImage()}">
+			  <img class="card-img-top prod-img" src="img/${selectedProduct.getProductImage()}">
 					  
 			  <div class="card-body">
 			    <p class="card-text">${selectedProduct.getProductDesc()}</p>
 			  </div>
 			  <ul class="list-group list-group-flush">
 			    <li class="list-group-item">
-			    <p class="card-text">Details
+			    <p class="card-text">Product Details
 			    <br>
 			     <br>
-			     Brand
+			     Supplier or Brand:
 			     <br>
 			     ${selectedProduct.getProductBrand()}
 			     ${selectedProduct.getProductSupplier()}
 			     <br><br>
-			     Persona:
+			     Who would this product likely be most useful for?
 			     <br>
 			     ${selectedProduct.getProductPersona()}
 			     <br><br>
 			     Product Type:
-			     <br>
-			     ${selectedProduct.getProductPersona()}
 			     <br>
 			     ${selectedProduct.getProductType()}
 			     <br><br>
@@ -73,9 +79,15 @@
 			     <br>
 			     ${selectedProduct.getProductType()}
 			     <br><br>
-			     Get the Product:
+			     Get the Product from
+			     ${selectedProduct.getProductBrand()}
+			     ${selectedProduct.getProductSupplier()}
+			     <a href="${selectedProduct.getProductLink()}">here</a>
+			     If the link does not work, please use the one below:
 			     <br>
 			     ${selectedProduct.getProductLink()}
+			     <br>
+			     
 			      </p>
 			    </li>
 			  </ul>

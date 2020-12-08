@@ -36,6 +36,18 @@
 <script type="text/javascript" src="js/pagination.js"></script>  
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+<style>
+.margins{
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.button-margins{
+	margin-left:15px;
+}
+</style>
+
 </head>
 <body>
 
@@ -46,44 +58,49 @@
 		<div class="row content">
 			
 			<div class="col-sm-2 sidenav" background-color:="#d3d8e0">
-				Products:<br />
+				<br></br>
+				Products<br/>
 				<br>
-				<a class="btn btn-default" href="FilterController?action=filter&type=desk">Desks</a>
-				<br>
-				<a class="btn btn-default" href="FilterController?action=filter&type=chair">Chairs</a>
-				<br>
-				<a class="btn btn-default" href="FilterController?action=filter&type=lighting">Lighting</a>
-				<br>
-				<a class="btn btn-default" href="FilterController?action=filter&type=keyboard">Keyboard</a>
-				<br>
-				<a class="btn btn-default" href="FilterController?action=filter&type=monitor">Monitor</a>
-				<br>
-				<a class="btn btn-default" href="FilterController?action=filter&type=mouse">Mouse</a>
-				<br>
-				<a class="btn btn-default" href="FilterController?action=filter&type=hardware">Hardware</a>
-				<br>
-				<a class="btn btn-default" href="FilterController?action=filter&type=software">Software</a>
 				
+				<div class="center-align">
+				Ergonomic Items
+				<div class="list-group w-75 margins" >
+				  <a href="FilterController?action=filter&type=desk" class="list-group-item list-group-item-action">
+				  	Desks</a>
+				  <a href="FilterController?action=filter&type=chair" class="list-group-item list-group-item-action">Chairs</a>
+				  <a href="FilterController?action=filter&type=lighting" class="list-group-item list-group-item-action">Lighting</a>
+				  <a href="FilterController?action=filter&type=keyboard" class="list-group-item list-group-item-action">Keyboard</a>
+				  <a href="FilterController?action=filter&type=monitor" class="list-group-item list-group-item-action">Monitor & Screens</a>
+				  <a href="FilterController?action=filter&type=mouse" class="list-group-item list-group-item-action">Mouse</a>
 				</div>
+				</div>
+				<br></br>
+				<div class="center-align">
+				Productivity Tools
+				<div class="list-group center-align margins w-75" >
+				  <a href="FilterController?action=filter&type=hardware" class="list-group-item list-group-item-action">
+				  	Hardware</a>
+				  <a href="FilterController?action=filter&type=software" class="list-group-item list-group-item-action">Software</a>
+				  </div>
+				</div>
+			</div>
 				
 			<div class="col-sm-8 text-left">
 				<br></br> 
 				<h1>Search Results</h1>
-				<div class="col-md-8">
 				         <form method="POST" action='SearchController' name="frmAddUser">
-						Keyword: <input type="text" name="keyword"
+						Keyword <small class="text-muted">Try 'professional' or 'software'</small>
+						<input type="text" name="keyword"
 							value="<c:out value="${product.searchword}" />"><input
-							type="submit" class="btn btn-info" value="Submit" />
+							type="submit" class="btn btn-info" style="margin-left:15px;" value="Submit" />
 					</form>
-				 </div>
-				 <div class="col-md-2">
-				    <a class="btn btn-default" href="suggestedProducts.jsp">Take Quiz</a>
-				 </div>
 				
-				<br> <br>
+				
+				<p></p>
+				<p>Not sure what you need?<a class="btn btn-primary button-margins" href="suggestedProducts.jsp">Take the Quiz</a></p>
 				
 				<form method="POST" action="FilterController">
-				  <select id = "sort" name="action" class="form-control" onchange="this.form.submit()">
+				  <select id = "sort" name="action" class="form-control w-25" onchange="this.form.submit()">
 				  	<option selected>Sort By</option>
 				    <option ${selected_LH} value="Price_LH">Price: Low to High</option>
 				    <option ${selected_HL} value="Price_HL">Price: High to Low</option>
@@ -113,17 +130,20 @@
 										<div id ="favouriteBtn" style="${showFavBtn}">
 										<a href="MyWorkspaceController?location=search&action=${wsItems.addOrDelete(products.get(j).getProductid())}&prodid=${products.get(j).getProductid()}&userid=${username}">${wsItems.ProductSaved(products.get(j).getProductid())}</a>
 										</div>
-									$ <c:out value="${products.get(j).getProductPrice()}" />
+									$ <c:out value="${products.get(j).getProductPriceString()}" />
 										<br>
 								</c:if>
 				                </td>
 			             	</c:forEach>
 			            </tr>
+			            
 			        </c:forEach>
 			        </tbody>
 		        </table>
 				<div class="col-md-12 text-center">
-		      <ul class="pagination pagination-sm" id="myPager"></ul>
+				
+		      <ul class="pagination pagination-lg" id="myPager"></ul>
+		      
 		      </div>
 		      
 				</center>

@@ -16,13 +16,10 @@
 
 <html lang="en">
 <head>
-<title>MIE350 Sample Web App - All Students in DB</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="bootstrap2.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -36,6 +33,46 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+<style>
+
+
+.grid {
+	width: 1200 px;
+	margin: 20px auto;
+	columns: 3;
+	column-gap: 30px;
+	grid-gap: 15px;
+}
+
+.grid .box{
+	width: 100%;
+	margin: 0 0 20px;
+	overflow: hidden;
+	break-inside: avoid;
+}
+
+.grid .box img{
+	max-width: 100%;
+}
+
+@media (max-width: 1200px)
+{
+	.grid {
+	columns: 2;
+	width: calc(100% - 30px);
+	box-sizing: border-box;
+	padding: 20px 20px 20px 0;
+	}
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+</style>
+
+
+
 </head>
 <body>
 
@@ -43,14 +80,14 @@
 	
 
 	<div class="container-fluid text-center">
-		<div class="row content">
-			
-			<div class="col-sm">
-				<br></br> 
+		
+			<br></br> 
 				<h1>Workspace Inspiration</h1>
+			<div class="grid">
+				
 				
 				<c:forEach items="${posts}" var="post">
-					<div class="card border-secondary mb-4 text-center align-center" style="max-width: 28rem;">
+					<div class="card border-secondary box text-center align-center">
 					 <!-- <div class="card-header">${post.getPostName()}</div> -->
 					  <a class="card-header" target="_blank" href="${post.getPostLink()}">${post.getPostName()}</a>
 					  <div class="card-body">
@@ -67,7 +104,7 @@
 			</div>
 
 			<%@ include file="footer.jsp"%>
-		</div>
+		
 		
 	</div>
 </body>

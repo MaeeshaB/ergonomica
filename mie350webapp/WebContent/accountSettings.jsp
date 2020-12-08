@@ -33,6 +33,12 @@
 <script type="text/javascript" src="js/accountSettingsHelper.js"></script>  
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+<style>
+.button-margins{
+	margin-top:15px;
+}
+</style>
 </head>
 <body>
 
@@ -40,42 +46,38 @@
 	
 
 	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-8 text-left">
+			<center>
+				<br></br>
 				<b><h1>My Account</h1></b>
-				
-				<form action="AccountController" method="post">
-					<table>
-					<tr><td>Current Password:</td><td><input required type="password" name="current" id="current" ></td></tr>
-					<tr><td>New Password:</td><td><input required type="password" name="new" id="new"></td></tr>
-					<tr><td>Confirm Password:</td><td><input required type="password" name="confirm" id="confirm"></td></tr>
-					
-					<tr><td>
+				<div class="card border-secondary mb-3 text-center" style="max-width: 25rem;">
+				  <div class="card-header">Change or Delete your Account Here</div>
+				  <div class="card-body">
+				  	<form action="AccountController" method="post">
+				  	Current Password <br><input required type="password" name="current" id="current" >
+				  	<br>New Password <br><input required type="password" name="new" id="new">
+					<br>Confirm Password<br><input required type="password" name="confirm" id="confirm">
+					<br>
 					<input name="action" type="hidden" value="changePassword"/>
-					<input id="submitBtn" type="submit" class="btn btn-info" value="Change Password">
-					</td></tr>
-					</table>
+					<input id="submitBtn" type="submit" class="btn btn-info button-margins" value="Change Password">
 				</form>
 				<br><br>
-				<form action="AccountController" method="post">
+				<form onclick = "confirmDelete()" action="AccountController" method="post">
 					<input name="action" type="hidden" value="deleteAccount"/>
 					<input id="submitBtn" type="submit" class="btn btn-danger" value="Delete Account">
-					</td></tr>
-					</table>
 				</form>
+				  </div>
+				</div>
 				
-			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
-		</div>
+			</center>
 	</div>
 
 	<%@ include file="footer.jsp"%>
 
+<script>
+function confirmDelete() {
+	  alert("Are you sure you want to delete your account? This action cannot be undone");
+	}
+</script>
 
 </body>
 </html>
