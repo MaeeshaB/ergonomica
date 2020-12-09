@@ -43,7 +43,11 @@
 			<div class="col-sm-2"></div>
 			
 			<div class="col-sm-8 text-left">
-
+			<ol class="breadcrumb">
+			  <li class="breadcrumb-item"><a href="#">Home</a></li>
+			  <li class="breadcrumb-item"><a href="#">Library</a></li>
+			  <li class="breadcrumb-item active">Data</li>
+			</ol>
 			<div class="card mb-4">
 			  <h3 class="card-header">${selectedProduct.getProductName()}</h3>
 			  <div class="card-body">

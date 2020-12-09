@@ -33,34 +33,59 @@
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 
 <style>
-body {
-  background-image: url('img/landing.jpg');
-  background-repeat: no-repeat;
-  background-position: 0px 0px;
-  background-size: cover;
-  background-attachment: fixed;
+body{
+  background: url('img/landing.svg');
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
+  background-size: contain;
 }
+
+.block-text {
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+.message-bg{
+	padding: 20px;
+	background-color: white;
+	position: relative;
+}
+
+.vertical-center {
+  width: 35em;
+  margin: 0;
+  position: absolute;
+  left: 33%;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.message-contents{
+}
+
+.message-bg:hover{
+}
+    
 </style>
 
 </head>
 <body>
-	<center>
-	<div class="container-fluid text-center">
-				<br></br>
-				<br></br>
-				<br></br>
-				<h1>Confused? Ergonomica is here to help.</h1>
-				<h4>In the times of  the COVID-19 pandemic, more and more people are working or studying remotely.</h4><br></br>
-  				<blockquote class="blockquote">	
-					<p class="mb-0">Ergonomica¡¯s goal is to help you set up a functional home office that is personalized to meet your needs
-					We offer tools to assist in planning your workspace through customized product suggestions based on 
-					which profile applies to you: children, students, and professionals in the office.</p>
-				</blockquote>
-				<br></br>
+		<div class="container-fluid text-left message-bg vertical-center">
+				<div><h2>There's only one you. <br>Why should your workspace be any different?</h2></div>
+				<div><br><h1>Ergonomica is here to help</h1></div>
+				<div>
+	  				<blockquote class="blockquote">	
+						<p class="mb-0">In the times of  the COVID-19 pandemic, more and more people are working or studying remotely.
+						Ergonomica¡¯s goal is to help you set up a functional home office that is personalized to meet your needs.
+						We offer tools to assist in planning your workspace through customized product suggestions based on 
+						which profile applies to you: children, students, and professionals in the office.</p>
+					</blockquote>
+				</div>
 				<a href="suggestedProducts.jsp">
-					<button type="button" class="btn btn-info">Show Me!</button>
+					<button type="button" class="btn btn-info">Transform my Workspace!</button>
 				</a>
 	</div>
-	</center>
 </body>
 </html>
