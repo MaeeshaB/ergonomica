@@ -6,7 +6,8 @@
 
 <html lang="en">
 <head>
-<title>Ergonomica - Log In or Sign Up</title>
+<link rel='icon' href='img/favicon.ico' type='image/x-icon'/ >
+<title>Login or Sign Up</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"

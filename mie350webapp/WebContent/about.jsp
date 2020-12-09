@@ -5,7 +5,8 @@
 
 <html lang="en">
 <head>
-<title>MIE350 Sample Web App - About</title>
+<link rel='icon' href='img/favicon.ico' type='image/x-icon'/ >
+<title>About Us</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"

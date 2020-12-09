@@ -13,7 +13,8 @@ public class Workspace {
 	 */
 	private String user_id;
 	private Vector<Product> products = new Vector<Product>();
-
+	private Vector<Post> posts = new Vector<Post>();
+	
 	public String getUserid() {
 		return user_id;
 	}
@@ -26,8 +27,16 @@ public class Workspace {
 		return products;
 	}
 	
+	public Vector<Post> getPosts() {
+		return posts;
+	}
+	
 	public void setProducts(Product product) {
 		this.products.add(product);
+	}
+	
+	public void setPosts(Post post) {
+		this.posts.add(post);
 	}
 
 	public String ProductSaved(int newprodid) {

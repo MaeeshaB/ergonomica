@@ -52,10 +52,10 @@ public class WorkspaceDao {
 		}
 	}
 	
-	//Getting all items in a user's workspace
+	//Getting all items + posts in a user's workspace
 	public static Workspace getAllSavedItems(String userid) {
 		Workspace wsItems = new Workspace();
-		
+		// PRODUCTS ONLY
 		try {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("select * from product where prod_id IN (select prod_id from user_workspace where user_id='"+userid+"')");
@@ -77,12 +77,31 @@ public class WorkspaceDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		// POSTS ONLY
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from post where post_id IN (select post_id from post_reaction where user_id='"+userid+"')");
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				Post post = new Post();
+				post.setPostId(rs.getString("post_id"));
+				post.setPostName(rs.getString("post_name"));
+				post.setPostDesc(rs.getString("post_desc"));
+				post.setPostPhoto(rs.getString("post_photo"));
+				post.setPostLink(rs.getString("post_link"));
+				post.setPostLikes(rs.getInt("post_likes"));
+				wsItems.setPosts(post);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		wsItems.setUserid(userid);
 
 		return wsItems;
 	}
-
 	
 	//Getting all the product ids in a user's workspace by the product id
 	public static List<Integer> getProdIdsByUserId(String userid) {

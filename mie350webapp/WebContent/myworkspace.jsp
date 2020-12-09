@@ -6,6 +6,7 @@
 
 <html lang="en">
 <head>
+<link rel='icon' href='img/favicon.ico' type='image/x-icon'/ >
 <title>My Workspace</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -131,53 +132,52 @@
 				  <label class="btn btn-primary active" onclick="productPage()" style="width:160px;">
 				    <input type="radio" name="options" id="option1" autocomplete="off" checked="">Products
 				  </label>
-				  <label class="btn btn-primary" onclick="" style="width:160px;">
+				  <label class="btn btn-primary" onclick="articlePage()" style="width:160px;">
 				    <input type="radio" name="options" id="option2" autocomplete="off" >Articles
 				  </label>
 				</div>
-				
-				<table class="table" id="productDisplay">
-					<c:forEach begin="0" end="${wsItems.getProducts().size()}" step="3" var="i">
-							<tr>
-			                <c:forEach begin="${i}" end="${i+2}" var="j">
-				                <td align="center">
-				                
-				                
-				                <c:if test="${j < wsItems.getProducts().size()}">
-				                	<img src="img/${wsItems.getProducts().get(j).getProductImage()}" height ="200">
-									<br>
-										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${wsItems.getProducts().get(j).getProductid()}"/>">${wsItems.getProducts().get(j).getProductName()}</a>
+				<div class="container-fluid text-center" id="productDisplay">
+					<table class="table">
+						<c:forEach begin="0" end="${wsItems.getProducts().size()}" step="3" var="i">
+								<tr>
+				                <c:forEach begin="${i}" end="${i+2}" var="j">
+					                <td align="center">
+					                
+					                
+					                <c:if test="${j < wsItems.getProducts().size()}">
+					                	<img src="img/${wsItems.getProducts().get(j).getProductImage()}" height ="200">
 										<br>
-										<a href="MyWorkspaceController?location=ws&action=${wsItems.addOrDelete(wsItems.getProducts().get(j).getProductid())}&prodid=${wsItems.getProducts().get(j).getProductid()}&userid=admin01">${wsItems.ProductSaved(wsItems.getProducts().get(j).getProductid())}</a>
-									$ <c:out value="${wsItems.getProducts().get(j).getProductPriceString()}" />
-										<br>
-								</c:if>
-				                </td>
-			             	</c:forEach>
-			            </tr>
-			            
-			        </c:forEach>
-		        </table>
-		        
+											<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${wsItems.getProducts().get(j).getProductid()}"/>">${wsItems.getProducts().get(j).getProductName()}</a>
+											<br>
+											<a href="MyWorkspaceController?location=ws&action=${wsItems.addOrDelete(wsItems.getProducts().get(j).getProductid())}&prodid=${wsItems.getProducts().get(j).getProductid()}&userid=admin01">${wsItems.ProductSaved(wsItems.getProducts().get(j).getProductid())}</a>
+										$ <c:out value="${wsItems.getProducts().get(j).getProductPriceString()}" />
+											<br>
+									</c:if>
+					                </td>
+				             	</c:forEach>
+				            </tr>
+				            
+				        </c:forEach>
+			        </table>
+		        </div>
 				<div class="grid" id="articleDisplay" style="display:none">
 				
-				
-				<c:forEach items="${posts}" var="post">
-					<div class="card border-secondary box text-center align-center">
-					 <!-- <div class="card-header">${post.getPostName()}</div> -->
-					  <a class="card-header" target="_blank" href="${post.getPostLink()}">${post.getPostName()}</a>
-					  <div class="card-body">
-					  <img class="card-img-top" src="img/${post.getPostPhoto()}" alt="Card image cap">
-					    <br>
-					    <div id ="favouriteBtn" style="${showFavBtn}">
-					    <a href="PostController?action=${post.liked("${username}")}&postid=<c:out value="${post.getPostId()}"/>&userid=${username}" >${post.ContainsUserId("${username}")}</a>
+					<c:forEach begin="0" end="${wsItems.getPosts().size()}" var="i">
+					
+						<div class="card border-secondary box text-center align-center">
+						  <a class="card-header" target="_blank" href="${wsItemspost.getPosts().get(i).getPostLink()}">${wsItemspost.getPosts().get(i).getPostName()}</a>
+						  <div class="card-body">
+						  <img class="card-img-top" src="img/${wsItemspost.getPosts().get(i).getPostPhoto()}" alt="Card image cap">
+						    <br>
+						    <div id ="favouriteBtn" style="${showFavBtn}">
+							</div>
+							<p class="card-text">${wsItemspost.getPosts().get(i).getPostDesc()}</p>
+						  </div>
 						</div>
-						<p class="card-text">${post.getPostDesc()}</p>
-					  </div>
-					</div>
-				</c:forEach>		
-				<br /> <br />
-			</div>
+						
+					</c:forEach>		
+					<br /> <br />
+				</div>
 		        
 		        <c:if test="${wsItems.getProducts().size() < 1}">
 					<p class="lead">Looks like there's nothing here.</p>

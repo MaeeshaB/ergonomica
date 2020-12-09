@@ -6,7 +6,8 @@
 
 <html lang="en">
 <head>
-<title>Ergonomica - Search</title>
+<link rel='icon' href='img/favicon.ico' type='image/x-icon'/ >
+<title>Search for Products</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
