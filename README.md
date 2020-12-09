@@ -1,4 +1,4 @@
-# Welcome to Ergonomica! # 
+# Welcome to Ergonomica! :mega: # 
 There's only one you.
 Why should your workspace be any different?
 
