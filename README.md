@@ -51,7 +51,7 @@ The entire url line should look like so:
 Member  | Role(s)
 ------------- | -------------
 Sarah Angelou | Lead Developer
-Audrey Benmergui | Developer, Designer, Writing & Research
+Audrey Benmergui | Developer, Designer, Writing & Research, Presenter
 Maeesha Biswas | Project Manager, Database Manager, Developer
 Lincoln Leung | Developer, Writing & Research
 Matt Lindzon | Designer, Writing & Research
