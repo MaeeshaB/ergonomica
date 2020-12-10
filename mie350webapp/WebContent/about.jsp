@@ -50,7 +50,7 @@
 	}
 	
 	/* Add some shadows to create a card effect */
-	.card {
+	.container:hover {
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	  
 	}
@@ -86,6 +86,25 @@
 	.button:hover {
 	  background-color: #555;
 	}*/
+	
+.google-slides-container{
+    position: relative;
+    width: 100%;
+    padding-top: 60%;
+    overflow: hidden;
+}
+
+.google-slides-container iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.button-margins{
+	margin-bottom: 10px;
+}
 </style> 
 
 </head>
@@ -102,21 +121,24 @@
 				<!-- Put main information here -->
 				<!-- Put main information here -->
 				<br></br> 
-				<h1>What is Ergonomica?</h1>
-				<h4>Statement of the purpose of the application:</h4>
+				<center>
+				<h1>Who are we and What is Ergonomica?</h1>
+				<div><img src="img/about-illustration.svg" style="margin-bottom:15px ;margin-top:15px"'></img></div>
+				</center>				
+				<h4>Statement of the purpose of the application</h4>
 				Ergonomica is a web app designed with the purpose of
 				helping users become their most productive and healthy selves while working 
 				from home by finding the best ergonomics and performance tools based on 
 				their unique needs. <br><br>
 				Ergonomica was born out of a need to provide support in the age of widespread work from 
 				home trends existing prior to 2020 and accelerated due to COVID-19.
-				
-				<h2>What can you do on Ergonomica?</h2>
-				<h4>Summary of functionalities:</h4>
+				<br></br>
+				<h2>What can you do with Ergonomica?</h2>
+				<h4>Summary of functionalities</h4>
 				<!-- can't link to the other functionalities just yet -->
 				In order to achieve our purpose of helping users become their most productive and healthy 
 				selves while working from home, the web application utilizes a  
-				<a href = "quiz.jsp">quiz</a>, where users can describe themselves and specify
+				<a href = "suggestedProducts.jsp">quiz</a>, where users can describe themselves and specify
 				their <i>#wfhGoals</i> so that our algorithm can return customized product suggestions to 
 				help them achieve their <i>#wfhGoals</i>. <br><br>
 				
@@ -134,7 +156,7 @@
 				<!-- TODO: make sure this points to the edit account page--> 
 				with which the favourites page will be associated.
 
-			
+				<br></br>
 				<h1>Who is behind Ergonomica?</h1>
 				<h4>A description of the development team and context of the task:</h4>
 				We are a team of industrial engineering students at the University of Toronto 
@@ -159,7 +181,7 @@
 				      <img src="img/about/Maeesha.jpg" alt="Maeesha" style="width:100%">
 				      <div class="container">
 				        <h3>Maeesha Biswas</h3>
-				        <span class="badge badge-pill badge-primary">Project Manager</span>	
+				        <span class="badge badge-pill badge-primary">Team Lead</span>	
 				        <span class="badge badge-pill badge-info">Developer</span>  
 				        <span class="badge badge-pill badge-dark">DB Manager</span>
 				        <br></br>    
@@ -173,7 +195,7 @@
 				      <img src="img/about/Sarah.jpg" alt="Sarah" style="width:100%">
 				      <div class="container">
 				        <h3>Sarah Angelou</h3>
-				        <span class="badge badge-pill badge-info">Development Lead</span> 	
+				        <span class="badge badge-pill badge-info">Lead Developer</span> 	
 				        <br></br> 		        
 				      </div>
 				    </div>
@@ -227,9 +249,10 @@
 				      <img src="img/about/Audrey.jpg" alt="Audrey" style="width:100%">
 				      <div class="container">
 				        <h3>Audrey Benmergui</h3>
-				        <span class="badge badge-pill badge-success">Designer</span>
-				        <span class="badge badge-pill badge-info">Developer</span> 
-				        <span class="badge badge-pill badge-warning">Writing & Research</span>		
+				        <span class="badge badge-pill badge-success button-margins">Designer</span>
+				        <span class="badge badge-pill badge-info button-margins">Developer</span> 
+				        <span class="badge badge-pill badge-warning button-margins">Writing & Research</span>		
+				        <span class="badge badge-pill badge-secondary button-margins">Presenter</span>	
 				        <br></br> 		        
 				      </div>
 				    </div>
@@ -254,16 +277,26 @@
 				University of Toronto. We are not associated in any way with the products 
 				and companies listed on the website. <br><br>
 				
+				<!-- 
 				<h1>Still Need (from project requirements)</h1>
-				--> Textual information providing an overview of the topic
+				- Textual information providing an overview of the topic
 				area selected (appropriate use of references, properly cited
 				is mandatory in this section) <br>
-				--> A reasonable collection of links, effectively organized and
+				- A reasonable collection of links, effectively organized and
 				identified to help site visitors and the sites of key other
 				content sites (e.g., businesses, other communities) that are
 				directly relevant
+				 -->
+				<h1>How Did we Make Ergonomica?</h1>
+				<h3>
+				  <small class="text-muted">Take a look at this slideshow to see the nitty gritty!</small>
+				</h3>
+				<div class="google-slides-container">
+					<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQwVDap1t30dC9H44w15TC3cE40p5f-IDZxKN64c5NjNSZseaoMmNs0SvtCsgynLAG2Id0btk7XUgBP/embed?start=true&loop=true&delayms=3000" 
+					frameborder="0" allowfullscreen="true" mozallowfullscreen="true" 
+					webkitallowfullscreen="true"></iframe>
+				</div>
 				
-				<br>
 				<br><br><br><br><br>
 			</div>
 			<div class="col-sm-2 sidenav">

@@ -53,9 +53,8 @@ var accountError = function (message) {
 	<div class="container-fluid text-center ">
 	<center>
 				<br></br>
-				<h1 id="loginTitle" style="display:none">Login</h1>
-				<h1 id="registerTitle" >Register</h1>	
-				
+				<h1 id="loginTitle">Login</h1>
+				<h1 id="registerTitle" style="display:none">Register</h1>	
 				<div class="btn-group btn-group-toggle button-margins" data-toggle="buttons">
 				  <label class="btn btn-primary active" onclick="loginPage()" style="width:160px;">
 				    <input type="radio" name="options" id="option1" autocomplete="off" checked=""> Login
@@ -65,13 +64,12 @@ var accountError = function (message) {
 				  </label>
 				</div>
 				
-				<div class="alert alert-dismissible alert-danger" style="max-width: 20rem;">
+				<div class="alert alert-dismissible alert-success" style="max-width: 20rem;">
 				  <button type="button" class="close" data-dismiss="alert">&times;</button>
-				  <strong>Sorry!</strong> That combination of username and email is already taken. Try again?
+				  <strong>Success!</strong> Your account has been deleted!
 				</div>
-				
 	
-			<div id="loginForm" class="card border-primary mb-3 text-center" style="max-width: 20rem; display:none">
+			<div id="loginForm" class="card border-primary mb-3 text-center" style="max-width: 20rem;">
 				  <div class="card-header">Enter your Credentials Here</div>
 				  <div class="card-body">
 				<form action="LoginController">
@@ -83,7 +81,7 @@ var accountError = function (message) {
 				 </div>
 			</div>
 			
-			<div id="registerForm" class="card border-info mb-3 text-center" style="max-width: 20rem">
+			<div id="registerForm" class="card border-info mb-3 text-center" style="max-width: 20rem; display:none">
 				  <div class="card-header">Sign up for Ergonomica Here!</div>
 				  <div class="card-body">
 					<form action="AccountController" method="post">

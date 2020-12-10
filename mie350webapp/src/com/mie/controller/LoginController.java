@@ -3,6 +3,9 @@ package com.mie.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -75,6 +78,9 @@ public class LoginController extends HttpServlet {
 				 * ask them to log in again with the proper credentials.
 				 */
 				response.sendRedirect("invalidLogin.jsp");
+				//response.sendRedirect("invalidLogin.jsp");
+				
+				
 			}
 		}
 

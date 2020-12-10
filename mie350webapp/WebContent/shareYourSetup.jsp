@@ -69,7 +69,7 @@
 }
 
 .card:hover {
-  transform: scale(1.02);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 </style>
 
@@ -164,7 +164,7 @@
 					  <img class="card-img-top" src="img/${post.getPostPhoto()}" alt="Card image cap">
 					    <br>
 					    <div id ="favouriteBtn" style="${showFavBtn}">
-					    <a href="PostController?action=${post.liked("${username}")}&postid=<c:out value="${post.getPostId()}"/>&userid=${username}" >${post.ContainsUserId("${username}")}</a>
+					    <a href="PostController?action=${post.liked(username)}&postid=<c:out value="${post.getPostId()}"/>&userid=<c:out value="${username}"/>" >${post.ContainsUserId(username)}</a>
 						</div>
 						<p class="card-text">${post.getPostDesc()}</p>
 					  </div>

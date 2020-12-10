@@ -78,6 +78,24 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("delete FROM post_reaction WHERE user_id='"+user+"'");
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("delete FROM user_workspace WHERE user_id='"+user+"'");
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void updatePassword(String username, String newPassword) {

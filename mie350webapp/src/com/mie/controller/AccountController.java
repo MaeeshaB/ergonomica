@@ -99,7 +99,7 @@ public class AccountController extends HttpServlet{
 						session.setAttribute("password", user.getPassword());
 						
 						dao.updatePassword(username, newPassword);
-						forward="userLogged.jsp";
+						forward="changePWsuccess.jsp";
 					} else {
 						forward = "invalidChangePassword.jsp";
 					}
@@ -116,7 +116,7 @@ public class AccountController extends HttpServlet{
 			String username = (String) session.getAttribute("username");
 			dao.deleteUser(username);
 			session.invalidate();
-			forward="search.jsp";
+			forward="deleteAccountSuccess.jsp";
 		}
 		
 		response.sendRedirect(forward);

@@ -62,12 +62,12 @@
 				  <label class="btn btn-danger" onclick="deleteAccount()" style="width:160px;">
 				    <input type="radio" name="options" id="option2" autocomplete="off" > Delete Account
 				  </label>
-				</div>
+				</div>		
 				
-				<div class="alert alert-dismissible alert-danger" style="max-width: 20rem">
+				<div class="alert alert-dismissible alert-success" style="max-width: 20rem;">
 				  <button type="button" class="close" data-dismiss="alert">&times;</button>
-				  <strong>Oh snap!</strong> Please check your credentials and try changing your password again.
-				</div>				
+				  <strong>Success!</strong> You have changed your password!
+				</div>
 				
 				<div id="changePW" class="card border-secondary mb-3 text-center" style="max-width: 20rem;">
 				  <div class="card-header">Please Enter Your New Password Below</div>
