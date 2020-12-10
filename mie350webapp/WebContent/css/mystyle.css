@@ -16,6 +16,25 @@
 	height: 100%;
 }
 
+
+.footer-bg{
+  background: url('img/white-svg');
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
+  background-size: contain;
+}
+
+/*vertically center a div*/
+.vertical-center {
+  width: 35em;
+  margin: 0;
+  position: absolute;
+  left: 33%;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 /* Set black background color, white text and some padding #006f94*/
 footer {
 	background-color: #adb5bd;

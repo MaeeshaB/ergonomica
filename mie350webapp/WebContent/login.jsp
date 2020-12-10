@@ -37,6 +37,12 @@
 	margin-bottom:15px;
 }
 
+	body{
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
 </style>
 
 <script>
@@ -93,11 +99,11 @@ var accountError = function (message) {
 			</div>	
 			<br>
 			<img src="img/login-illustration.svg"></img>
-			
+			<br></br>
 	</div>
 
 	</center>
-
+<%@ include file="footer.jsp"%>
 <script>
 function loginPage(){
 	  var a = document.getElementById("loginForm");

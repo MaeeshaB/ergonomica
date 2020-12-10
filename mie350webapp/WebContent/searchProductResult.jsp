@@ -47,6 +47,14 @@
 .button-margins{
 	margin-left:15px;
 }
+
+
+.column-footer {
+	float: left;
+	width: 50%;
+	padding-left: 10px;
+	padding-right: 10px;
+}
 </style>
 
 </head>
@@ -196,10 +204,11 @@
 			            
 			        </c:forEach>
 			        </tbody>
+			        	
 		        </table>
 				<div class="col-md-12 text-center">
-				
-		      <ul class="pagination pagination-lg" id="myPager"></ul>
+			  
+		      <ul class="pagination pagination-lg" id="myPager"></ul>	
 		      
 		      </div>
 		      
@@ -210,13 +219,10 @@
 			<div class="col-sm-2 sidenav">
 			</div>
 			
-			<%@ include file="footer.jsp"%>
-			
 			
 		</div>
 		
 	</div>
 </body>
+		       
 </html>
-
-

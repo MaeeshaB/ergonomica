@@ -1,0 +1,3 @@
+<svg width="743" height="382" viewBox="0 0 743 382" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="743" height="382" fill="white"/>
+</svg>

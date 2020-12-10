@@ -41,6 +41,11 @@
 	margin-bottom:15px;
 }
 
+body{
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
 </style>
 </head>
 <body>
@@ -133,10 +138,11 @@
 					<path d="M52.9822 62.5982L48.2322 50.0582" stroke="#EADDD8" stroke-width="0.7599" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 					<path d="M66.3521 78.2182C66.3521 78.2182 81.1121 76.3682 88.5521 72.1082" stroke="#EADDD8" stroke-width="0.7599" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
-							
+						<br></br>	
 			</center>
+			
 	</div>
-
+<%@ include file="footer.jsp"%>
 
 <script>
 function confirmDelete() {

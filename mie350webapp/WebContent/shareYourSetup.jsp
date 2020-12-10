@@ -37,7 +37,11 @@
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 
 <style>
-
+body{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
 
 .grid {
 	width: 1200 px;
@@ -173,9 +177,10 @@
 				<br /> <br />
 			</div>
 
-			<%@ include file="footer.jsp"%>
+			
 		
 		
 	</div>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>
