@@ -47,7 +47,11 @@
 .button-margins{
 	margin-left:15px;
 }
-
+body{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
 
 .column-footer {
 	float: left;
@@ -66,7 +70,7 @@
 		
 		<div class="row content">
 			
-			<div class="col-sm-2 sidenav" background-color:="#d3d8e0">
+			<div class="col-sm-2 sidenav">
 				<br></br><b>
 				Products</b><br/>
 				<br>
@@ -92,6 +96,9 @@
 				  <a href="FilterController?action=filter&type=software" class="list-group-item list-group-item-action">Software</a>
 				  </div>
 				</div>
+				<br></br>
+				<a class="btn btn-outline-secondary" href="SearchController">All
+						Products</a>
 			</div>
 				
 			<div class="col-sm-8 text-left">
@@ -175,16 +182,14 @@
 				  
 				</form>
 				
-				<br> <br>
+				<br> 
+				<p class="lead">${products.size()} Results</p>
 				
 				<center>
-				
-			
-				
+				<!-- IN CASE I MESS UP 
 				<table class="table" id="myTable">
 					<tbody id="myTableBody">
 					<c:forEach begin="0" end="${products.size()}" step="3" var="i">
-							<tr>
 			                <c:forEach begin="${i}" end="${i+2}" var="j">
 				                <td align="center">
 				                <c:if test="${j < products.size()}">
@@ -192,37 +197,60 @@
 									<br>
 										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${products.get(j).getProductid()}"/>">${products.get(j).getProductName()}</a>
 										<br>
-										<div id ="favouriteBtn" style="${showFavBtn}">
-										<a href="MyWorkspaceController?location=search&action=${wsItems.addOrDelete(products.get(j).getProductid())}&prodid=${products.get(j).getProductid()}&userid=${username}">${wsItems.ProductSaved(products.get(j).getProductid())}</a>
+										<div id ="favouriteBtn button-add" style="${showFavBtn}">
+								 		<a href="MyWorkspaceController?location=search&action=${wsItems.addOrDelete(products.get(j).getProductid())}&prodid=${products.get(j).getProductid()}&userid=${username}">${wsItems.ProductSaved(products.get(j).getProductid())}</a>  
 										</div>
 									$ <c:out value="${products.get(j).getProductPriceString()}" />
 										<br>
 								</c:if>
-				                </td>
 			             	</c:forEach>
 			            </tr>
 			            
 			        </c:forEach>
-			        </tbody>
+			        </tbody> -->
+				
+				<table class="table">
+					<c:forEach begin="0" end="${products.size()}" step="3" var="i">
+					<tr>
+			                <c:forEach begin="${i}" end="${i+2}" var="j">
+				                <td align="center">
+				                <c:if test="${j < products.size()}">
+				                	<img src="img/${products.get(j).getProductImage()}" height="200">
+									<br>
+										<a class="btn btn-link" href="ProductController?action=select&prodId=<c:out value="${products.get(j).getProductid()}"/>">${products.get(j).getProductName()}</a>
+										<br>
+										<div id ="favouriteBtn button-add" style="${showFavBtn}">
+								 		<a href="MyWorkspaceController?location=search&action=${wsItems.addOrDelete(products.get(j).getProductid())}&prodid=${products.get(j).getProductid()}&userid=${username}">${wsItems.ProductSaved(products.get(j).getProductid())}</a>  
+										</div>
+									$ <c:out value="${products.get(j).getProductPriceString()}" />
+										<br>
+								</c:if>
+			             	</c:forEach>
+			            </tr>
+			        </c:forEach>
+			       
 			        	
 		        </table>
+			        
 				<div class="col-md-12 text-center">
-			  
-		      <ul class="pagination pagination-lg" id="myPager"></ul>	
+			<!-- 
+		      <ul class="pagination pagination-lg pager" id="myPager"></ul>	   -->  
 		      
 		      </div>
-		      
+		       
 				</center>
 				
 			</div>
 			
 			<div class="col-sm-2 sidenav">
+			
 			</div>
-			
-			
 		</div>
-		
+		<!-- 
+		<div id= footer-show><%@ include file="footer.jsp"%></div>  -->
 	</div>
+	
 </body>
-		       
+		      
 </html>
+

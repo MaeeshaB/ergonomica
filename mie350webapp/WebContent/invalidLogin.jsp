@@ -27,6 +27,12 @@
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 
 <style>
+	body{
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	
 .inner
 {
     display: inline-block;
@@ -97,11 +103,11 @@ var accountError = function (message) {
 			</div>	
 			<br>
 			<img src="img/login-illustration.svg"></img>
-			
+			<br></br>
 	</div>
 
 	</center>
-
+<%@ include file="footer.jsp"%>
 <script>
 function loginPage(){
 	  var a = document.getElementById("loginForm");

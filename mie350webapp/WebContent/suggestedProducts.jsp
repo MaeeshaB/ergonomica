@@ -43,6 +43,12 @@
 .ui-controlgroup-horizontal .ui-spinner-input {
 	width: 20px;
 }
+
+body{
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
 </style>
 
 

@@ -42,7 +42,6 @@ body{
 	display: flex;
 	flex-direction: column;
 }
-
 .grid {
 	width: 1200 px;
 	margin: 20px auto;
@@ -50,18 +49,15 @@ body{
 	column-gap: 30px;
 	grid-gap: 15px;
 }
-
 .grid .box{
 	width: 100%;
 	margin: 0 0 20px;
 	overflow: hidden;
 	break-inside: avoid;
 }
-
 .grid .box img{
 	max-width: 100%;
 }
-
 @media (max-width: 1200px)
 {
 	.grid {
@@ -71,7 +67,6 @@ body{
 	padding: 20px 20px 20px 0;
 	}
 }
-
 .card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

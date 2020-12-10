@@ -32,6 +32,12 @@
 	max-height: 250px;
 }
 
+body{
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	
 </style>
 </head>
 <body>
@@ -46,14 +52,14 @@
 			<div class="col-sm-8 text-left">
 			<br>
 			<ol class="breadcrumb">
-			  <li class="breadcrumb-item"><a href="#">Search</a></li>
-			  <li class="breadcrumb-item"><a href="#">${selectedProduct.getProductCategory()}</a></li>
-			  <li class="breadcrumb-item active">${selectedProduct.getProductType()}</li>
+			  <li class="breadcrumb-item"><a href="search.jsp">Search</a></li>
+			  <li class="breadcrumb-item"><a href="FilterController?action=filter&category=${selectedProduct.getProductCategory()}">${selectedProduct.getProductCategory()}</a></li>
+			  <li class="breadcrumb-item active">${selectedProduct.getProductName()}</li>
 			</ol>
 			<div class="card mb-4">
 			  <h3 class="card-header">${selectedProduct.getProductName()}</h3>
 			  <div class="card-body">
-			    <h5 class="card-title">$${selectedProduct.getProductPrice()}</h5>
+			    <h5 class="card-title">$${selectedProduct.getProductPriceString()}</h5>
 			    <a href="MyWorkspaceController?location=prodDesc&action=${wsItems.addOrDelete(selectedProduct.getProductid())}&prodid=${selectedProduct.getProductid()}&userid=admin01">${wsItems.ProductSaved(selectedProduct.getProductid())}</a>
 				</div>
 			  <img class="card-img-top prod-img" src="img/${selectedProduct.getProductImage()}">
@@ -101,11 +107,13 @@
 			</div>
 			
 			</div>
+					<%@ include file="footer.jsp"%>
 		</div>
+
 	</div>
 
 
 </body>
-</html>
 
+</html>
 

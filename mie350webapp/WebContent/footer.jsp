@@ -8,6 +8,12 @@
 
 footer {
   background-color: #17a2b8;
+  left:0;
+  bottom:0;
+}body{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .row-footer:after {
