@@ -4,6 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("username") == null) {
+		session.setAttribute("showFavBtn", "display:none");
+	} else {
+		session.setAttribute("showFavBtn", "display:block");
+	}
+%>
+
 <html lang="en">
 <head>
 <link rel='icon' href='img/favicon.ico' type='image/x-icon'/ >
@@ -60,7 +70,9 @@ body{
 			  <h3 class="card-header">${selectedProduct.getProductName()}</h3>
 			  <div class="card-body">
 			    <h5 class="card-title">$${selectedProduct.getProductPriceString()}</h5>
-			    <a href="MyWorkspaceController?location=prodDesc&action=${wsItems.addOrDelete(selectedProduct.getProductid())}&prodid=${selectedProduct.getProductid()}&userid=admin01">${wsItems.ProductSaved(selectedProduct.getProductid())}</a>
+			    <div id ="favouriteBtn button-add" style="${showFavBtn}">
+				<a href="MyWorkspaceController?location=search&action=${wsItems.addOrDelete(products.get(j).getProductid())}&prodid=${products.get(j).getProductid()}&userid=${username}">${wsItems.ProductSaved(products.get(j).getProductid())}</a>  
+				</div>
 				</div>
 			  <img class="card-img-top prod-img" src="img/${selectedProduct.getProductImage()}">
 					  

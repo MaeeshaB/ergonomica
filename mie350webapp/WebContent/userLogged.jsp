@@ -64,7 +64,7 @@
 				<div>Don't mind me, just cleaning up here...</div>
 				<br></br>
 				<img src="img/robot-broom.svg" alt="cartoon robot"><br></br>
-				<div>You will be redirected to <a href=myworkspace.jsp>your workspace</a> in a few seconds.</div>
+				<div>You will be redirected to <a href="MyWorkspaceController?location=ws&action=getItems&userid=${username}">your workspace</a> in a few seconds.</div>
 
 			</div>
 			<div class="col-sm-2 sidenav">
