@@ -29,7 +29,7 @@ Logout | Terminates the user's session.
 ### Part 1: Credentials :bust_in_silhouette: ### 
 For demonstration purposes, please use the following credentials when logging in.
 Alternative login credentials can be found in the "user" relation of the database.
-These ones have the most extensive account activity to showcase the full functionality
+The credentials below have the most extensive account activity to showcase the full functionality
 of the app.
 
 Username: admin01
