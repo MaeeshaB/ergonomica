@@ -35,6 +35,7 @@ public class FilterController extends HttpServlet {
 		String forward = SEARCH_PRODUCT;
 		String action = request.getParameter("action");
 		String type = request.getParameter("type");
+		String category = request.getParameter("category");
 		HttpSession session = request.getSession(true);
 		
 		//Changing the selected value of the "sort by" dropdown menu
@@ -46,7 +47,10 @@ public class FilterController extends HttpServlet {
 		//Filtering by type of product
 		if (action.equalsIgnoreCase("filter")) {
 			session.setAttribute("products", dao.getProductByType(type));
+		} else if (action.equalsIgnoreCase("filter_category")) {
+			session.setAttribute("products", dao.getProductByCategory(category));
 		}
+		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}

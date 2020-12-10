@@ -98,6 +98,19 @@ public class ProductDao {
 
 		return products;
 	}
+	
+	//Getting a list of product of a category
+	public List<Product> getProductByCategory(String category) {
+		List<Product> products = new ArrayList<Product>();
+		
+		String str = "SELECT * FROM Product P LEFT JOIN product_ivity I ON (P.prod_id = I.prod_id)"
+				+" LEFT JOIN product_ergonomic E ON (P.prod_id = E.prod_id)"
+				+" WHERE P.prod_category = '"+category+"'";
+		
+		products = getProductsFromDB(str);
+
+		return products;
+	}
 
 
 	//Getting a list of products from a keyword - used for the search feature
