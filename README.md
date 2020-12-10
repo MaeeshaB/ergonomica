@@ -26,6 +26,8 @@ My Workspace | User can see their liked products (from search results) and artic
 Logout | Terminates the user's session.
 
 ## Instructions :page_facing_up: ##
+### :exclamation: This site has been optimized for [Google Chrome](https://www.google.com/intl/en_ca/chrome/)
+
 ### Part 1: Credentials :bust_in_silhouette: ### 
 For demonstration purposes, please use the following credentials when logging in.
 Alternative login credentials can be found in the "user" relation of the database.
